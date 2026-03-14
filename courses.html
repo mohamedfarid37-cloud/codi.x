@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Courses | CODI.X TEAM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================================
+   GENERAL PAGE STYLE
+================================ */
+
+body{
+margin:0;
+font-family:"Poppins",sans-serif;
+background:#12000a;
+color:white;
+}
+
+/* ================================
+   NAVBAR
+================================ */
+
+.site-header{
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(6px);
+padding:12px 0;
+z-index:999;
+}
+
+.nav-inner{
+width:90%;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.brand img{
+width:40px;
+}
+
+.main-nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+margin:0;
+padding:0;
+}
+
+.main-nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:.3s;
+}
+
+.main-nav a:hover{
+color:#ff4d8a;
+}
+
+/* ================================
+   PAGE TITLE
+================================ */
+
+.page-title{
+text-align:center;
+font-size:34px;
+margin-top:40px;
+font-weight:700;
+}
+
+.page-sub{
+text-align:center;
+color:#caa3b2;
+margin-top:10px;
+}
+
+/* ================================
+   COURSES GRID
+================================ */
+
+.courses-container{
+width:90%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+/* ================================
+   COURSE CARD
+================================ */
+
+.course-card{
+
+background:#3a001f;
+border-radius:14px;
+padding:20px;
+text-align:center;
+
+transition:0.35s;
+
+}
+
+/* Hover Animation */
+
+.course-card:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+}
+
+/* ================================
+   COURSE IMAGE
+================================ */
+
+.course-card img{
+
+width:150px;
+height:150px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+margin-bottom:15px;
+
+}
+
+/* ================================
+   COURSE TITLE
+================================ */
+
+.course-title{
+
+font-size:20px;
+font-weight:600;
+margin-bottom:10px;
+
+}
+
+/* ================================
+   COURSE INFO
+================================ */
+
+.course-info{
+
+font-size:14px;
+color:#caa3b2;
+margin-bottom:6px;
+
+}
+
+/* ================================
+   ENGINEER NAME
+================================ */
+
+.course-teacher{
+
+margin-top:10px;
+font-size:14px;
+color:#ffb7d0;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================================
+     NAVBAR
+================================ -->
+
+<header class="site-header">
+
+<div class="nav-inner">
+
+<div class="brand">
+<img src="./images/logo.jpg">
+<h2>CODI.X</h2>
+</div>
+
+<nav class="main-nav">
+<ul>
+
+<li><a href="index.html">Home</a></li>
+<!-- <li><a href="courses.html">Courses</a></li> -->
+<li><a href="assignments.html">assignments</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="contact.html">contact</a></li>
+
+</ul>
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- ================================
+     PAGE TITLE
+================================ -->
+
+<h1 class="page-title">Available Courses</h1>
+
+<p class="page-sub">
+Explore the latest courses provided by CODI.X Team
+</p>
+
+
+<!-- ================================
+     COURSES SECTION
+================================ -->
+
+<div class="courses-container">
+    
+
+    <!-- ================================
+     COURSE CARD 1
+================================ -->
+
+<div class="course-card">
+
+<img src="./images/farid5.jpg">
+
+<div class="course-title"> Data Structure   </div>
+
+<div class="course-info">Start Date: 10 Apr 2026</div>
+
+<div class="course-info">Registration: Closed Now</div>
+
+<div class="course-teacher">Instructor: Eng. Mohamed Farid</div>
+
+</div>
+
+
+<!-- ================================
+     COURSE CARD 2
+================================ -->
+
+<div class="course-card">
+
+<img src="./images/rolaa.jpg">
+
+<div class="course-title">Flutter </div>
+
+<div class="course-info">Start Date: 24 July 2026</div>
+
+<div class="course-info">Registration: Closed Now</div>
+
+<div class="course-teacher">Instructor: Eng. Rola </div>
+
+</div>
+
+
+
+
+
+<!-- ================================
+     COURSE CARD 3
+================================ -->
+
+<div class="course-card">
+
+<img src="./images/nasry.jpg">
+
+<div class="course-title">Artificial Intelligence  </div>
+
+<div class="course-info">Start Date: 10 Aug 2026</div>
+
+<div class="course-info">Registration: Close Now</div>
+
+<div class="course-teacher">Instructor: Eng. Mohamed Ali</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- ================================
+     COURSE CARD 3
+================================ -->
+
+<div class="course-card">
+
+<img src="./images/abdo.jpg">
+
+<div class="course-title">English Basics </div>
+
+<div class="course-info">Start Date: 25 July 2026</div>
+
+<div class="course-info">Registration: Close Now</div>
+
+<div class="course-teacher">Instructor: Eng. Abdelrahman</div>
+
+</div>
+
+
+
+</div>
+
+
+</body>
+</html>

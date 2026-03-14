@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>CODI.X Assignment Exam</title>
+
+<style>
+
+/* الصفحة */
+
+body{
+font-family:Arial;
+background:#0f0f14;
+color:white;
+margin:0;
+padding:0;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#111;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#ff3b3b;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+}
+
+.nav-links a:hover{
+color:#ff3b3b;
+}
+
+/* الصندوق */
+
+.container{
+max-width:800px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* العنوان */
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* إدخال الاسم */
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+border:none;
+border-radius:6px;
+}
+
+/* زر */
+
+button{
+background:#ff3b3b;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#d12a2a;
+}
+
+/* السؤال */
+
+.question{
+margin-top:25px;
+padding:20px;
+background:#16161d;
+border-radius:10px;
+}
+
+/* النتيجة */
+
+.result{
+font-size:22px;
+text-align:center;
+margin-top:30px;
+color:#00ff9d;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">CODI.X</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="assignments.html">Assignments</a>
+<a href="news.html">News</a>
+</div>
+
+</div>
+
+
+<div class="container">
+
+<h1>Assignment Exam</h1>
+
+
+<!-- تسجيل الاسم -->
+
+<div id="login">
+
+<input type="text" id="studentName" placeholder="Enter your name">
+
+<button onclick="startExam()">Start Exam</button>
+
+</div>
+
+
+<!-- الامتحان -->
+
+<div id="exam" style="display:none;">
+
+<div class="question">
+
+<h3>1- What does HTML stand for?</h3>
+
+<label>
+<input type="radio" name="q1" value="0">
+Hyper Tool Machine Language
+</label><br>
+
+<label>
+<input type="radio" name="q1" value="1">
+Hyper Text Markup Language
+</label><br>
+
+<label>
+<input type="radio" name="q1" value="0">
+High Text Machine Language
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>2- Which language styles web pages?</h3>
+
+<label>
+<input type="radio" name="q2" value="0">
+HTML
+</label><br>
+
+<label>
+<input type="radio" name="q2" value="1">
+CSS
+</label><br>
+
+<label>
+<input type="radio" name="q2" value="0">
+Python
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>3- Which language runs in the browser?</h3>
+
+<label>
+<input type="radio" name="q3" value="1">
+JavaScript
+</label><br>
+
+<label>
+<input type="radio" name="q3" value="0">
+Python
+</label><br>
+
+<label>
+<input type="radio" name="q3" value="0">
+C++
+</label>
+
+</div>
+
+
+<br>
+
+<button onclick="submitExam()">Submit Exam</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* بدء الامتحان */
+
+function startExam(){
+
+let name=document.getElementById("studentName").value;
+
+if(name===""){
+alert("Please enter your name");
+return;
+}
+
+document.getElementById("login").style.display="none";
+document.getElementById("exam").style.display="block";
+
+}
+
+
+/* حساب النتيجة */
+
+function submitExam(){
+
+let answers=document.querySelectorAll("input[type=radio]:checked");
+
+let score=0;
+
+answers.forEach(a=>{
+score+=parseInt(a.value);
+});
+
+document.getElementById("result").innerHTML=
+"Your Score: "+score+" / 3";
+
+}
+
+</script>
+
+
+</body>
+</html>

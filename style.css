@@ -1,0 +1,253 @@
+/* =================================================
+   ROOT VARIABLES
+   الألوان والمتغيرات الأساسية للموقع
+================================================= */
+
+:root{
+  --bg-1:#12000a;         /* deep burgundy */
+  --bg-2:#2a0018;         /* panel */
+  --card:#3a001f;
+  --accent:#ff4d8a;       /* pink accent */
+  --accent-2:#ffb7d0;     /* light pink */
+  --gold:#ffd36b;
+  --muted:#caa3b2;
+  --glass: rgba(255,255,255,0.03);
+  --radius:14px;
+}
+
+
+/* =================================================
+   GLOBAL RESET
+   إعدادات أساسية لكل الصفحة
+================================================= */
+
+*{
+  box-sizing:border-box
+}
+
+html,body{
+  height:100%
+}
+
+body{
+  margin:0;
+  font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background: linear-gradient(180deg,var(--bg-1), #170010 120%);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  line-height:1.45;
+}
+
+
+/* =================================================
+   CONTAINER
+   الحاوية الأساسية للمحتوى
+================================================= */
+
+.wrap{
+  width:calc(100% - 40px);
+  max-width:1200px;
+  margin:0 auto;
+}
+
+
+/* =================================================
+   HEADER / NAVBAR
+   شريط التنقل العلوي
+================================================= */
+
+header.site-header{
+  position:sticky;
+  top:0;
+  z-index:9999;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(90deg, rgba(10,10,12,0.25), rgba(20,8,12,0.15));
+  border-bottom: 1px solid rgba(255,77,138,0.04);
+}
+
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px
+}
+
+.brand img{
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  object-fit:cover;
+  box-shadow:0 8px 30px rgba(0,0,0,0.6)
+}
+
+.brand h1{
+  font-size:20px;
+  margin:0;
+  color:var(--gold);
+  letter-spacing:0.6px
+}
+
+nav.main-nav ul{
+  display:flex;
+  gap:12px;
+  list-style:none;
+  margin:0
+}
+
+nav.main-nav a{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:10px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  transition:all .22s ease
+}
+
+nav.main-nav a:hover{
+  color:var(--accent);
+  transform:translateY(-2px)
+}
+
+nav.main-nav a.active{
+  color:var(--accent)
+}
+
+
+/* =================================================
+   HERO SECTION
+   القسم الأول في الصفحة
+================================================= */
+
+.hero{
+  padding:80px 0;
+  text-align:center
+}
+
+.hero h2{
+  font-size:40px;
+  margin-bottom:10px;
+  color:var(--gold)
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:650px;
+  margin:auto
+}
+
+
+/* =================================================
+   CARDS / GENERAL CARDS STYLE
+   شكل البطاقات المستخدمة في الموقع
+================================================= */
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px;
+  transition:all .25s ease;
+  border:1px solid rgba(255,255,255,0.03)
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.5)
+}
+
+
+/* =================================================
+   GRID LAYOUT
+   الشبكات المستخدمة لعرض العناصر
+================================================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px
+}
+
+
+/* =================================================
+   INSTRUCTORS SECTION
+   قسم الانستركتورز
+================================================= */
+
+.row{
+  display:flex;
+  gap:26px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.profile{
+  background:var(--card);
+  padding:20px;
+  border-radius:var(--radius);
+  text-align:center;
+  width:240px;
+  transition:all .25s ease;
+}
+
+.profile img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:12px
+}
+
+.profile h4{
+  margin:6px 0;
+  color:var(--gold)
+}
+
+.profile p{
+  font-size:14px;
+  color:var(--muted)
+}
+
+.profile:hover{
+  transform:translateY(-6px)
+}
+
+
+/* =================================================
+   FOOTER
+   تذييل الموقع
+================================================= */
+
+footer{
+  padding:30px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px
+}
+
+
+/* =================================================
+   RESPONSIVE
+   تحسين الموقع للموبايل
+================================================= */
+
+@media (max-width:768px){
+
+  .hero h2{
+    font-size:28px
+  }
+
+  .nav-inner{
+    flex-direction:column;
+    gap:10px
+  }
+
+}
