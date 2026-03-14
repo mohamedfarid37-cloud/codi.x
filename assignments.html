@@ -12,20 +12,32 @@
 
 <style>
 
-/* =================================
-   GENERAL PAGE STYLE
-================================= */
+/* ================================
+   GENERAL STYLE
+================================ */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
-margin:0;
 font-family:"Poppins",sans-serif;
 background:#12000a;
 color:white;
+overflow-x:hidden;
 }
 
-/* =================================
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+/* ================================
    NAVBAR
-================================= */
+================================ */
 
 .site-header{
 position:sticky;
@@ -37,8 +49,6 @@ z-index:999;
 }
 
 .nav-inner{
-width:90%;
-margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -51,15 +61,18 @@ gap:10px;
 }
 
 .brand img{
-width:40px;
+width:42px;
+border-radius:6px;
+}
+
+.brand h2{
+font-size:20px;
 }
 
 .main-nav ul{
 display:flex;
 list-style:none;
 gap:25px;
-margin:0;
-padding:0;
 }
 
 .main-nav a{
@@ -73,14 +86,14 @@ transition:.3s;
 color:#ff4d8a;
 }
 
-/* =================================
+/* ================================
    PAGE TITLE
-================================= */
+================================ */
 
 .page-title{
 text-align:center;
 font-size:34px;
-margin-top:40px;
+margin-top:50px;
 font-weight:700;
 }
 
@@ -90,97 +103,197 @@ color:#caa3b2;
 margin-top:10px;
 }
 
-/* =================================
+/* ================================
    ASSIGNMENTS GRID
-================================= */
+================================ */
 
 .tasks-container{
-width:90%;
-margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 margin-top:40px;
+margin-bottom:60px;
 }
 
-/* =================================
+/* ================================
    TASK CARD
-================================= */
+================================ */
 
 .task-card{
-
 background:#3a001f;
 border-radius:14px;
 padding:20px;
 text-align:center;
-transition:0.35s;
-
+transition:.35s;
 }
 
 .task-card:hover{
-
 transform:translateY(-8px) scale(1.02);
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
-
+box-shadow:0 12px 25px rgba(0,0,0,0.6);
 }
 
-/* =================================
+/* ================================
    TASK IMAGE
-================================= */
+================================ */
 
 .task-card img{
-
-width:140px;
-height:140px;
+width:120px;
+height:120px;
 object-fit:cover;
 border-radius:10px;
 margin-bottom:15px;
-
 }
 
-/* =================================
+/* ================================
    TASK TITLE
-================================= */
+================================ */
 
 .task-title{
-
 font-size:20px;
 font-weight:600;
 margin-bottom:10px;
-
 }
 
-/* =================================
+/* ================================
    TASK INFO
-================================= */
+================================ */
 
 .task-info{
-
 font-size:14px;
 color:#caa3b2;
 margin-bottom:6px;
-
 }
 
-/* =================================
+/* ================================
    DOWNLOAD BUTTON
-================================= */
+================================ */
 
 .download-btn{
-
 display:inline-block;
-margin-top:10px;
-padding:8px 16px;
+margin-top:12px;
+padding:9px 18px;
 background:#ff4d8a;
 color:white;
 text-decoration:none;
-border-radius:6px;
+border-radius:8px;
 font-size:14px;
-
+transition:.3s;
 }
 
 .download-btn:hover{
 background:#ff2e74;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+border-top:1px solid rgba(255,255,255,0.1);
+padding:25px 0;
+text-align:center;
+color:#caa3b2;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:768px){
+
+.main-nav ul{
+gap:15px;
+font-size:14px;
+}
+
+.page-title{
+font-size:26px;
+}
+
+.task-card img{
+width:100px;
+height:100px;
+}
+
+}
+
+/* ================================
+   GLOBAL RESPONSIVE FIX
+================================ */
+
+/* الصور متكبرش عن الكرت */
+/* img{
+max-width:100%;
+height:auto;
+display:block;
+} */
+/* الصور العامة */
+img{
+max-width:100%;
+height:auto;
+}
+
+/* صور الكروت في المنتصف */
+.course-card img{
+display:block;
+margin:0 auto 15px auto;
+}
+/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
+.nav-inner{
+flex-wrap:wrap;
+}
+
+/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
+@media (max-width:768px){
+
+.main-nav{
+width:100%;
+margin-top:10px;
+}
+
+.main-nav ul{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+padding:0;
+}
+
+.main-nav a{
+font-size:14px;
+}
+
+/* يقلل المسافات */
+.wrap,
+.container{
+width:95%;
+}
+
+/* يخلي الكروت تملى الشاشة */
+.courses-container{
+grid-template-columns:1fr;
+}
+
+/* أي جريد تانية */
+.cards,
+.grid,
+.items{
+grid-template-columns:1fr !important;
+}
+
+}
+
+/* موبايلات أصغر */
+@media (max-width:480px){
+
+.page-title{
+font-size:22px;
+}
+
+.brand h2{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -189,13 +302,13 @@ background:#ff2e74;
 
 <body>
 
-<!-- =================================
+<!-- ================================
      NAVBAR
-================================= -->
+================================ -->
 
 <header class="site-header">
 
-<div class="nav-inner">
+<div class="container nav-inner">
 
 <div class="brand">
 <img src="./images/logo.jpg">
@@ -207,9 +320,8 @@ background:#ff2e74;
 
 <li><a href="index.html">Home</a></li>
 <li><a href="courses.html">Courses</a></li>
-<!-- <li><a href="tasks.html">Assignments</a></li> -->
 <li><a href="news.html">News</a></li>
-<li><a href="contact.html">contact</a></li>
+<li><a href="contact.html">Contact</a></li>
 
 </ul>
 </nav>
@@ -219,9 +331,11 @@ background:#ff2e74;
 </header>
 
 
-<!-- =================================
+<!-- ================================
      PAGE TITLE
-================================= -->
+================================ -->
+
+<div class="container">
 
 <h1 class="page-title">Assignments</h1>
 
@@ -230,44 +344,38 @@ Download and submit your course assignments
 </p>
 
 
-<!-- =================================
+<!-- ================================
      ASSIGNMENTS SECTION
-================================= -->
+================================ -->
 
 <div class="tasks-container">
 
-
-<!-- =================================
-     ASSIGNMENT CARD 1
-================================= -->
+<!-- ASSIGNMENT 1 -->
 
 <div class="task-card">
 
 <img src="./images/farid5.jpg">
 
-<div class="task-title">Task Month 7 </div>
+<div class="task-title">Task Month 7</div>
 
 <div class="task-info">Course: Data Structure</div>
 
 <div class="task-info">Deadline: 15 Apr 2026</div>
 
-<a href="#" class="download-btn"> soon</a>
+<a href="#" class="download-btn">Soon</a>
 
 </div>
 
 
-
-<!-- =================================
-     ASSIGNMENT CARD 2
-================================= -->
+<!-- ASSIGNMENT 2 -->
 
 <div class="task-card">
 
 <img src="./images/abdo.jpg">
 
-<div class="task-title"> unit one </div>
+<div class="task-title">Unit One</div>
 
-<div class="task-info">Course:  English </div>
+<div class="task-info">Course: English</div>
 
 <div class="task-info">Deadline: 25 July 2026</div>
 
@@ -275,29 +383,14 @@ Download and submit your course assignments
 
 </div>
 
-
-
-<!-- =================================
-     ASSIGNMENT CARD 3
-================================= -->
-
-<!-- <div class="task-card">
-
-<img src="task3.jpg">
-
-<div class="task-title">Python Data Analysis</div>
-
-<div class="task-info">Course: Python Programming</div>
-
-<div class="task-info">Deadline: 30 July 2026</div>
-
-<a href="#" class="download-btn">Download</a>
-
-</div> -->
-
-
+</div>
 
 </div>
+
+
+<footer>
+© 2026 CODI.X Team — All Rights Reserved
+</footer>
 
 </body>
 </html>

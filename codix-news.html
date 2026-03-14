@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<title>CODI.X News</title>
+<title>CODI.X Assignment Exam</title>
 
 <style>
 
-/* تصميم الصفحة العامة */
+/* الصفحة */
+
 body{
-font-family: Arial;
+font-family:Arial;
 background:#0f0f14;
 color:white;
 margin:0;
 padding:0;
-direction:rtl;
 }
 
-/* الناف بار */
+/* NAVBAR */
+
 .navbar{
 display:flex;
 justify-content:space-between;
@@ -26,14 +28,12 @@ padding:15px 40px;
 background:#111;
 }
 
-/* اللوجو */
 .logo{
 font-size:22px;
 font-weight:bold;
 color:#ff3b3b;
 }
 
-/* لينكات الناف بار */
 .nav-links{
 display:flex;
 gap:25px;
@@ -42,49 +42,150 @@ gap:25px;
 .nav-links a{
 color:white;
 text-decoration:none;
-font-size:16px;
 }
 
 .nav-links a:hover{
 color:#ff3b3b;
 }
 
-/* صندوق المقال */
-.article{
-max-width:850px;
+/* الصندوق */
+
+.container{
+max-width:800px;
 margin:auto;
 padding:40px 20px;
 }
 
-/* الصورة */
-.article img{
-width:260px;
-display:block;
-margin:auto;
-border-radius:10px;
-margin-bottom:20px;
-}
+/* العنوان */
 
-/* عنوان المقال */
-.article h1{
+h1{
 text-align:center;
-font-size:30px;
 margin-bottom:30px;
 }
 
-/* العناوين الفرعية */
-.article h2{
-color:#ff3b3b;
-margin-top:35px;
-}
+/* إدخال الاسم */
 
-/* الفقرات */
-.article p{
-line-height:1.9;
-font-size:18px;
+input{
+width:100%;
+padding:12px;
 margin-bottom:20px;
+border:none;
+border-radius:6px;
 }
 
+/* زر */
+
+button{
+background:#ff3b3b;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#d12a2a;
+}
+
+/* السؤال */
+
+.question{
+margin-top:25px;
+padding:20px;
+background:#16161d;
+border-radius:10px;
+}
+
+/* النتيجة */
+
+.result{
+font-size:22px;
+text-align:center;
+margin-top:30px;
+color:#00ff9d;
+}
+
+/* ================================
+   GLOBAL RESPONSIVE FIX
+================================ */
+
+/* الصور متكبرش عن الكرت */
+/* img{
+max-width:100%;
+height:auto;
+display:block;
+} */
+
+/* الصور العامة */
+img{
+max-width:100%;
+height:auto;
+}
+
+/* صور الكروت في المنتصف */
+.course-card img{
+display:block;
+margin:0 auto 15px auto;
+}
+
+/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
+.nav-inner{
+flex-wrap:wrap;
+}
+
+/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
+@media (max-width:768px){
+
+.main-nav{
+width:100%;
+margin-top:10px;
+}
+
+.main-nav ul{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+padding:0;
+}
+
+.main-nav a{
+font-size:14px;
+}
+
+/* يقلل المسافات */
+.wrap,
+.container{
+width:95%;
+}
+
+/* يخلي الكروت تملى الشاشة */
+.courses-container{
+grid-template-columns:1fr;
+}
+
+/* أي جريد تانية */
+.cards,
+.grid,
+.items{
+grid-template-columns:1fr !important;
+}
+
+}
+
+/* موبايلات أصغر */
+@media (max-width:480px){
+
+.page-title{
+font-size:22px;
+}
+
+.brand h2{
+font-size:18px;
+}
+
+}
 </style>
 
 </head>
@@ -92,6 +193,7 @@ margin-bottom:20px;
 <body>
 
 <!-- NAVBAR -->
+
 <div class="navbar">
 
 <div class="logo">CODI.X</div>
@@ -105,87 +207,142 @@ margin-bottom:20px;
 
 </div>
 
-<!-- ARTICLE -->
-<div class="article">
 
-<img src="./images/how co.jpg">
+<div class="container">
 
-<h1>مين CODI.X ؟</h1>
+<h1>Assignment Exam</h1>
 
-<p>💻🚀 CODI.X – بنفهم وهنخليك تفهم</p>
 
-<h2>👥 مين إحنا؟</h2>
+<!-- تسجيل الاسم -->
 
-<p>
-احنا تيم CODI.X تيم تطوعي تابع لكلية الحاسبات والذكاء الاصطناعي – جامعة سوهاج
-تجمعنا فكرة واحدة إننا نغيّر الصورة النمطية عن البرمجة والتقنية جوّه الكلية
-ونخلّي التعلم مش بس “كود بيتكتب” لكن تفكير ومنطق وإبداع
-</p>
+<div id="login">
 
-<p>
-احنا مجموعة طلبة قررت إنها متستناش الظروف ولا تشتكي من النظام
-قررنا نبدأ نعلّم ونشارك ونبني مجتمع فاهم فعلاً مش حافظ خطوات
-</p>
+<input type="text" id="studentName" placeholder="Enter your name">
 
-<h2>🎯 هدفنا</h2>
-
-<p>
-هدفنا نطلّع ناس فاهمة بتعمل إيه وليه
-ناس مش بس بتعرف تكتب كود لكن تعرف تفكر وتبتكر وتحل مشاكل
-</p>
-
-<p>
-عايزين نساعد أي حد عنده شغف بالمجال إنه يبدأ صح
-ويتعلم بالطريقة اللي تخليه فعلاً مميز وسط أي منافسة
-</p>
-
-<h2>⚡ بنقدملك إيه؟</h2>
-
-<p>
-📍 ورش عمل (Workshops) مجانية 100% في مجالات مختلفة منها
-</p>
-
-<p>
-💻 البرمجة والتطوير<br>
-🤖 الذكاء الاصطناعي<br>
-🔐 الأمن السيبراني<br>
-🎨 التصميم وواجهة المستخدم<br>
-🌐 تطوير الويب والموبايل
-</p>
-
-<p>
-كل ورشة بنقدّمها بتكون عملية يعني تطلع منها بشغل حقيقي
-تقدر تستخدمه أو تحطه في بورتفوليو
-وكمان بننظّم إيفنتات تقنية وتعليمية على مدار السنة
-علشان تكتسب خبرة وتتعرف على ناس عندها نفس الشغف والطموح
-</p>
-
-<h2>💬 ليه تتابعنا؟</h2>
-
-<p>
-لأننا ببساطة مش بنقدّم "محتوى"
-احنا بنقدّم فرصة تتطور فعلاً وتتعلم من ناس زيك بدأت من نفس مكانك
-وتوصل أسرع لأنك في بيئة بتدعمك وتفهمك
-</p>
-
-<p>
-هتتعلم وتشتغل وتبني وتكتشف نفسك أكتر معانا
-وكل ده مجاني وتطوعي 100% — بدافع الشغف
-</p>
-
-<h2>🚀 ختامًا</h2>
-
-<p>
-CODI.X مش مجرد تيم جامعي
-دي فكرة ومجتمع بيحاول يغيّر مفهوم التعلم في الكلية
-لو عندك شغف حقيقي مكانك معانا سواء كمتابع أو كعضو
-</p>
-
-<p>
-📍 CODI.X – Learn. Build. Grow.
-</p>
+<button onclick="startExam()">Start Exam</button>
 
 </div>
+
+
+<!-- الامتحان -->
+
+<div id="exam" style="display:none;">
+
+<div class="question">
+
+<h3>1- What does HTML stand for?</h3>
+
+<label>
+<input type="radio" name="q1" value="0">
+Hyper Tool Machine Language
+</label><br>
+
+<label>
+<input type="radio" name="q1" value="1">
+Hyper Text Markup Language
+</label><br>
+
+<label>
+<input type="radio" name="q1" value="0">
+High Text Machine Language
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>2- Which language styles web pages?</h3>
+
+<label>
+<input type="radio" name="q2" value="0">
+HTML
+</label><br>
+
+<label>
+<input type="radio" name="q2" value="1">
+CSS
+</label><br>
+
+<label>
+<input type="radio" name="q2" value="0">
+Python
+</label>
+
+</div>
+
+
+<div class="question">
+
+<h3>3- Which language runs in the browser?</h3>
+
+<label>
+<input type="radio" name="q3" value="1">
+JavaScript
+</label><br>
+
+<label>
+<input type="radio" name="q3" value="0">
+Python
+</label><br>
+
+<label>
+<input type="radio" name="q3" value="0">
+C++
+</label>
+
+</div>
+
+
+<br>
+
+<button onclick="submitExam()">Submit Exam</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* بدء الامتحان */
+
+function startExam(){
+
+let name=document.getElementById("studentName").value;
+
+if(name===""){
+alert("Please enter your name");
+return;
+}
+
+document.getElementById("login").style.display="none";
+document.getElementById("exam").style.display="block";
+
+}
+
+
+/* حساب النتيجة */
+
+function submitExam(){
+
+let answers=document.querySelectorAll("input[type=radio]:checked");
+
+let score=0;
+
+answers.forEach(a=>{
+score+=parseInt(a.value);
+});
+
+document.getElementById("result").innerHTML=
+"Your Score: "+score+" / 3";
+
+}
+
+</script>
+
 
 </body>
 </html>

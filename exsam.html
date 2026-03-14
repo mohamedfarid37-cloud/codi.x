@@ -4,21 +4,40 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>CODI.X Assignment Exam</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* الصفحة */
+/* ================================
+   GENERAL STYLE
+================================ */
 
-body{
-font-family:Arial;
-background:#0f0f14;
-color:white;
+*{
 margin:0;
 padding:0;
+box-sizing:border-box;
 }
 
-/* NAVBAR */
+body{
+font-family:"Poppins",sans-serif;
+background:#12000a;
+color:white;
+overflow-x:hidden;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* ================================
+   NAVBAR
+================================ */
 
 .navbar{
 display:flex;
@@ -31,7 +50,7 @@ background:#111;
 .logo{
 font-size:22px;
 font-weight:bold;
-color:#ff3b3b;
+color:#ff4d8a;
 }
 
 .nav-links{
@@ -42,30 +61,27 @@ gap:25px;
 .nav-links a{
 color:white;
 text-decoration:none;
+font-weight:500;
 }
 
 .nav-links a:hover{
-color:#ff3b3b;
+color:#ff4d8a;
 }
 
-/* الصندوق */
-
-.container{
-max-width:800px;
-margin:auto;
-padding:40px 20px;
-}
-
-/* العنوان */
+/* ================================
+   TITLE
+================================ */
 
 h1{
 text-align:center;
 margin-bottom:30px;
 }
 
-/* إدخال الاسم */
+/* ================================
+   INPUT
+================================ */
 
-input{
+input[type="text"]{
 width:100%;
 padding:12px;
 margin-bottom:20px;
@@ -73,37 +89,165 @@ border:none;
 border-radius:6px;
 }
 
-/* زر */
+/* ================================
+   BUTTON
+================================ */
 
 button{
-background:#ff3b3b;
+background:#ff4d8a;
 color:white;
 border:none;
 padding:12px 25px;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
+font-size:15px;
+transition:.3s;
 }
 
 button:hover{
-background:#d12a2a;
+background:#ff2e74;
 }
 
-/* السؤال */
+/* ================================
+   QUESTION CARD
+================================ */
 
 .question{
 margin-top:25px;
 padding:20px;
-background:#16161d;
-border-radius:10px;
+background:#3a001f;
+border-radius:12px;
 }
 
-/* النتيجة */
+.question h3{
+margin-bottom:10px;
+}
+
+.question label{
+display:block;
+margin-bottom:8px;
+cursor:pointer;
+}
+
+/* ================================
+   RESULT
+================================ */
 
 .result{
 font-size:22px;
 text-align:center;
 margin-top:30px;
 color:#00ff9d;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+border-top:1px solid rgba(255,255,255,0.1);
+padding:25px;
+text-align:center;
+margin-top:40px;
+color:#caa3b2;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:768px){
+
+.navbar{
+flex-direction:column;
+gap:10px;
+}
+
+.nav-links{
+gap:15px;
+font-size:14px;
+}
+
+}
+/* ================================
+   GLOBAL RESPONSIVE FIX
+================================ */
+
+/* الصور متكبرش عن الكرت */
+/* img{
+max-width:100%;
+height:auto;
+display:block;
+} */
+
+/* الصور العامة */
+img{
+max-width:100%;
+height:auto;
+}
+
+/* صور الكروت في المنتصف */
+.course-card img{
+display:block;
+margin:0 auto 15px auto;
+}
+
+/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
+.nav-inner{
+flex-wrap:wrap;
+}
+
+/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
+@media (max-width:768px){
+
+.main-nav{
+width:100%;
+margin-top:10px;
+}
+
+.main-nav ul{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+padding:0;
+}
+
+.main-nav a{
+font-size:14px;
+}
+
+/* يقلل المسافات */
+.wrap,
+.container{
+width:95%;
+}
+
+/* يخلي الكروت تملى الشاشة */
+.courses-container{
+grid-template-columns:1fr;
+}
+
+/* أي جريد تانية */
+.cards,
+.grid,
+.items{
+grid-template-columns:1fr !important;
+}
+
+}
+
+/* موبايلات أصغر */
+@media (max-width:480px){
+
+.page-title{
+font-size:22px;
+}
+
+.brand h2{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -132,8 +276,7 @@ color:#00ff9d;
 
 <h1>Assignment Exam</h1>
 
-
-<!-- تسجيل الاسم -->
+<!-- LOGIN -->
 
 <div id="login">
 
@@ -144,7 +287,7 @@ color:#00ff9d;
 </div>
 
 
-<!-- الامتحان -->
+<!-- EXAM -->
 
 <div id="exam" style="display:none;">
 
@@ -152,20 +295,9 @@ color:#00ff9d;
 
 <h3>1- What does HTML stand for?</h3>
 
-<label>
-<input type="radio" name="q1" value="0">
-Hyper Tool Machine Language
-</label><br>
-
-<label>
-<input type="radio" name="q1" value="1">
-Hyper Text Markup Language
-</label><br>
-
-<label>
-<input type="radio" name="q1" value="0">
-High Text Machine Language
-</label>
+<label><input type="radio" name="q1" value="0"> Hyper Tool Machine Language</label>
+<label><input type="radio" name="q1" value="1"> Hyper Text Markup Language</label>
+<label><input type="radio" name="q1" value="0"> High Text Machine Language</label>
 
 </div>
 
@@ -174,20 +306,9 @@ High Text Machine Language
 
 <h3>2- Which language styles web pages?</h3>
 
-<label>
-<input type="radio" name="q2" value="0">
-HTML
-</label><br>
-
-<label>
-<input type="radio" name="q2" value="1">
-CSS
-</label><br>
-
-<label>
-<input type="radio" name="q2" value="0">
-Python
-</label>
+<label><input type="radio" name="q2" value="0"> HTML</label>
+<label><input type="radio" name="q2" value="1"> CSS</label>
+<label><input type="radio" name="q2" value="0"> Python</label>
 
 </div>
 
@@ -196,23 +317,11 @@ Python
 
 <h3>3- Which language runs in the browser?</h3>
 
-<label>
-<input type="radio" name="q3" value="1">
-JavaScript
-</label><br>
-
-<label>
-<input type="radio" name="q3" value="0">
-Python
-</label><br>
-
-<label>
-<input type="radio" name="q3" value="0">
-C++
-</label>
+<label><input type="radio" name="q3" value="1"> JavaScript</label>
+<label><input type="radio" name="q3" value="0"> Python</label>
+<label><input type="radio" name="q3" value="0"> C++</label>
 
 </div>
-
 
 <br>
 
@@ -225,13 +334,18 @@ C++
 </div>
 
 
+<footer>
+© 2026 CODI.X Team — All Rights Reserved
+</footer>
+
+
 <script>
 
-/* بدء الامتحان */
+/* START EXAM */
 
 function startExam(){
 
-let name=document.getElementById("studentName").value;
+let name=document.getElementById("studentName").value.trim();
 
 if(name===""){
 alert("Please enter your name");
@@ -244,11 +358,16 @@ document.getElementById("exam").style.display="block";
 }
 
 
-/* حساب النتيجة */
+/* SUBMIT EXAM */
 
 function submitExam(){
 
 let answers=document.querySelectorAll("input[type=radio]:checked");
+
+if(answers.length<3){
+alert("Please answer all questions");
+return;
+}
 
 let score=0;
 
@@ -256,13 +375,14 @@ answers.forEach(a=>{
 score+=parseInt(a.value);
 });
 
+let name=document.getElementById("studentName").value;
+
 document.getElementById("result").innerHTML=
-"Your Score: "+score+" / 3";
+name + ", Your Score: "+score+" / 3";
 
 }
 
 </script>
-
 
 </body>
 </html>

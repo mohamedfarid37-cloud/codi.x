@@ -16,11 +16,23 @@
    GENERAL PAGE STYLE
 ================================ */
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:"Poppins",sans-serif;
 background:#12000a;
 color:white;
+overflow-x:hidden;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
 }
 
 /* ================================
@@ -37,8 +49,6 @@ z-index:999;
 }
 
 .nav-inner{
-width:90%;
-margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -51,15 +61,18 @@ gap:10px;
 }
 
 .brand img{
-width:40px;
+width:42px;
+border-radius:6px;
+}
+
+.brand h2{
+font-size:20px;
 }
 
 .main-nav ul{
 display:flex;
 list-style:none;
 gap:25px;
-margin:0;
-padding:0;
 }
 
 .main-nav a{
@@ -80,7 +93,7 @@ color:#ff4d8a;
 .page-title{
 text-align:center;
 font-size:34px;
-margin-top:40px;
+margin-top:50px;
 font-weight:700;
 }
 
@@ -95,12 +108,11 @@ margin-top:10px;
 ================================ */
 
 .courses-container{
-width:90%;
-margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
 margin-top:40px;
+margin-bottom:60px;
 }
 
 /* ================================
@@ -108,24 +120,16 @@ margin-top:40px;
 ================================ */
 
 .course-card{
-
 background:#3a001f;
 border-radius:14px;
 padding:20px;
 text-align:center;
-
 transition:0.35s;
-
 }
 
-/* Hover Animation */
-
 .course-card:hover{
-
 transform:translateY(-8px) scale(1.02);
-
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
-
+box-shadow:0 12px 25px rgba(0,0,0,0.6);
 }
 
 /* ================================
@@ -133,16 +137,11 @@ box-shadow:0 10px 25px rgba(0,0,0,0.5);
 ================================ */
 
 .course-card img{
-
-width:150px;
-height:150px;
-
+width:130px;
+height:130px;
 object-fit:cover;
-
 border-radius:12px;
-
 margin-bottom:15px;
-
 }
 
 /* ================================
@@ -150,11 +149,9 @@ margin-bottom:15px;
 ================================ */
 
 .course-title{
-
 font-size:20px;
 font-weight:600;
 margin-bottom:10px;
-
 }
 
 /* ================================
@@ -162,11 +159,9 @@ margin-bottom:10px;
 ================================ */
 
 .course-info{
-
 font-size:14px;
 color:#caa3b2;
 margin-bottom:6px;
-
 }
 
 /* ================================
@@ -174,13 +169,124 @@ margin-bottom:6px;
 ================================ */
 
 .course-teacher{
-
 margin-top:10px;
 font-size:14px;
 color:#ffb7d0;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+border-top:1px solid rgba(255,255,255,0.1);
+padding:25px 0;
+text-align:center;
+color:#caa3b2;
+}
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+
+@media(max-width:768px){
+
+.main-nav ul{
+gap:15px;
+font-size:14px;
+}
+
+.page-title{
+font-size:26px;
+}
+
+.course-card img{
+width:110px;
+height:110px;
+}
 
 }
 
+/* ================================
+   GLOBAL RESPONSIVE FIX
+================================ */
+
+/* الصور متكبرش عن الكرت */
+/* img{
+max-width:100%;
+height:auto;
+display:block;
+} */
+
+/* الصور العامة */
+img{
+max-width:100%;
+height:auto;
+}
+
+/* صور الكروت في المنتصف */
+.course-card img{
+display:block;
+margin:0 auto 15px auto;
+}
+
+/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
+.nav-inner{
+flex-wrap:wrap;
+}
+
+/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
+@media (max-width:768px){
+
+.main-nav{
+width:100%;
+margin-top:10px;
+}
+
+.main-nav ul{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+padding:0;
+}
+
+.main-nav a{
+font-size:14px;
+}
+
+/* يقلل المسافات */
+.wrap,
+.container{
+width:95%;
+}
+
+/* يخلي الكروت تملى الشاشة */
+.courses-container{
+grid-template-columns:1fr;
+}
+
+/* أي جريد تانية */
+.cards,
+.grid,
+.items{
+grid-template-columns:1fr !important;
+}
+
+}
+
+/* موبايلات أصغر */
+@media (max-width:480px){
+
+.page-title{
+font-size:22px;
+}
+
+.brand h2{
+font-size:18px;
+}
+
+}
 </style>
 
 </head>
@@ -193,7 +299,7 @@ color:#ffb7d0;
 
 <header class="site-header">
 
-<div class="nav-inner">
+<div class="container nav-inner">
 
 <div class="brand">
 <img src="./images/logo.jpg">
@@ -204,10 +310,9 @@ color:#ffb7d0;
 <ul>
 
 <li><a href="index.html">Home</a></li>
-<!-- <li><a href="courses.html">Courses</a></li> -->
-<li><a href="assignments.html">assignments</a></li>
+<li><a href="assignments.html">Assignments</a></li>
 <li><a href="news.html">News</a></li>
-<li><a href="contact.html">contact</a></li>
+<li><a href="contact.html">Contact</a></li>
 
 </ul>
 </nav>
@@ -221,6 +326,8 @@ color:#ffb7d0;
      PAGE TITLE
 ================================ -->
 
+<div class="container">
+
 <h1 class="page-title">Available Courses</h1>
 
 <p class="page-sub">
@@ -233,17 +340,14 @@ Explore the latest courses provided by CODI.X Team
 ================================ -->
 
 <div class="courses-container">
-    
 
-    <!-- ================================
-     COURSE CARD 1
-================================ -->
+<!-- COURSE 1 -->
 
 <div class="course-card">
 
 <img src="./images/farid5.jpg">
 
-<div class="course-title"> Data Structure   </div>
+<div class="course-title">Data Structure</div>
 
 <div class="course-info">Start Date: 10 Apr 2026</div>
 
@@ -253,75 +357,62 @@ Explore the latest courses provided by CODI.X Team
 
 </div>
 
-
-<!-- ================================
-     COURSE CARD 2
-================================ -->
+<!-- COURSE 2 -->
 
 <div class="course-card">
 
 <img src="./images/rolaa.jpg">
 
-<div class="course-title">Flutter </div>
+<div class="course-title">Flutter</div>
 
 <div class="course-info">Start Date: 24 July 2026</div>
 
 <div class="course-info">Registration: Closed Now</div>
 
-<div class="course-teacher">Instructor: Eng. Rola </div>
+<div class="course-teacher">Instructor: Eng. Rola</div>
 
 </div>
 
-
-
-
-
-<!-- ================================
-     COURSE CARD 3
-================================ -->
+<!-- COURSE 3 -->
 
 <div class="course-card">
 
 <img src="./images/nasry.jpg">
 
-<div class="course-title">Artificial Intelligence  </div>
+<div class="course-title">Artificial Intelligence</div>
 
 <div class="course-info">Start Date: 10 Aug 2026</div>
 
-<div class="course-info">Registration: Close Now</div>
+<div class="course-info">Registration: Closed Now</div>
 
 <div class="course-teacher">Instructor: Eng. Mohamed Ali</div>
 
 </div>
 
-
-
-
-
-
-
-<!-- ================================
-     COURSE CARD 3
-================================ -->
+<!-- COURSE 4 -->
 
 <div class="course-card">
 
 <img src="./images/abdo.jpg">
 
-<div class="course-title">English Basics </div>
+<div class="course-title">English Basics</div>
 
 <div class="course-info">Start Date: 25 July 2026</div>
 
-<div class="course-info">Registration: Close Now</div>
+<div class="course-info">Registration: Closed Now</div>
 
 <div class="course-teacher">Instructor: Eng. Abdelrahman</div>
 
 </div>
 
-
+</div>
 
 </div>
 
+
+<footer>
+© 2026 CODI.X Team — All Rights Reserved
+</footer>
 
 </body>
 </html>

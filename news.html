@@ -144,6 +144,86 @@ font-size:14px;
 background:#ff2e74;
 }
 
+/* ================================
+   GLOBAL RESPONSIVE FIX
+================================ */
+
+/* الصور متكبرش عن الكرت */
+/* img{
+max-width:100%;
+height:auto;
+display:block;
+} */
+
+/* الصور العامة */
+img{
+max-width:100%;
+height:auto;
+}
+
+/* صور الكروت في المنتصف */
+.course-card img{
+display:block;
+margin:0 auto 15px auto;
+}
+
+/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
+.nav-inner{
+flex-wrap:wrap;
+}
+
+/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
+@media (max-width:768px){
+
+.main-nav{
+width:100%;
+margin-top:10px;
+}
+
+.main-nav ul{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+padding:0;
+}
+
+.main-nav a{
+font-size:14px;
+}
+
+/* يقلل المسافات */
+.wrap,
+.container{
+width:95%;
+}
+
+/* يخلي الكروت تملى الشاشة */
+.courses-container{
+grid-template-columns:1fr;
+}
+
+/* أي جريد تانية */
+.cards,
+.grid,
+.items{
+grid-template-columns:1fr !important;
+}
+
+}
+
+/* موبايلات أصغر */
+@media (max-width:480px){
+
+.page-title{
+font-size:22px;
+}
+
+.brand h2{
+font-size:18px;
+}
+
+}
 </style>
 
 </head>
@@ -194,7 +274,7 @@ background:#ff2e74;
 <div class="news-content">
 
 <h3>مين كوديكس ؟</h3>
-<p>اكيد سمعت عن كويكس بس تعرف احنا مين كويس ! </p>
+<p>اكيد سمعت عن كويكس بس تعرف احنا مين كويس !</p>
 
 
 
@@ -212,9 +292,9 @@ background:#ff2e74;
 
 <div class="news-content">
 
-<h3>مسابقات كويكس  </h3>
+<h3>مسابقه Problem Solving & FlowChart </h3>
 
-<p>Problem Solving & FlowChart</p>
+
 
 <a href="ch.html" class="news-btn">Read More</a>
 
@@ -236,7 +316,7 @@ background:#ff2e74;
 رحلخ اختبار ابطال كوديكس خليك جزء من الحكايه
 </p>
 
-<a href="#" class="news-btn">Registration is Closed</a>
+<a href="#" class="news-btn">Read More</a>
 
 </div>
 
