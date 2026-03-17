@@ -1,191 +1,135 @@
 <!DOCTYPE html>
-<html lang="ar">
-
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>CODI.X News</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODI.X | من نحن</title>
 
-<style>
-
-/* تصميم الصفحة العامة */
-body{
-font-family: Arial;
-background:#0f0f14;
-color:white;
-margin:0;
-padding:0;
-direction:rtl;
-}
-
-/* الناف بار */
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 40px;
-background:#111;
-}
-
-/* اللوجو */
-.logo{
-font-size:22px;
-font-weight:bold;
-color:#ff3b3b;
-}
-
-/* لينكات الناف بار */
-.nav-links{
-display:flex;
-gap:25px;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-font-size:16px;
-}
-
-.nav-links a:hover{
-color:#ff3b3b;
-}
-
-/* صندوق المقال */
-.article{
-max-width:850px;
-margin:auto;
-padding:40px 20px;
-}
-
-/* الصورة */
-.article img{
-width:260px;
-display:block;
-margin:auto;
-border-radius:10px;
-margin-bottom:20px;
-}
-
-/* عنوان المقال */
-.article h1{
-text-align:center;
-font-size:30px;
-margin-bottom:30px;
-}
-
-/* العناوين الفرعية */
-.article h2{
-color:#ff3b3b;
-margin-top:35px;
-}
-
-/* الفقرات */
-.article p{
-line-height:1.9;
-font-size:18px;
-margin-bottom:20px;
-}
-
-</style>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css"><link rel="stylesheet" href="styles/ch.css">
+   
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+    <header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img src="images/logo.jpg" alt="CODI.X logo">
+      <div class="brand-copy">
+        <h1>CODI.X TEAM</h1>
+        <small>Faculty of Computers &amp; AI — Sohag University</small>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul><li><a href="index.html" class="">Home</a></li><li><a href="courses.html" class="">Courses</a></li><li><a href="assignments.html" class="">Assignments</a></li><li><a href="news.html" class="active">News</a></li><li><a href="index.html#contact" class="">Contact</a></li></ul>
+    </nav>
+  </div>
+</header>
 
-<div class="logo">CODI.X</div>
+  <main class="codix-page">
+    <section class="codix-hero">
+      <h1>CODI.X – بنفهم وهنخليك تفهم</h1>
+      <p>
+        فريق طلابي تطوعي من كلية الحاسبات والذكاء الاصطناعي – جامعة سوهاج،
+        هدفه بناء مجتمع تقني قائم على الفهم الحقيقي والتطبيق العملي.
+      </p>
+    </section>
 
-<div class="nav-links">
-<a href="index.html">Home</a>
-<a href="courses.html">Courses</a>
-<a href="assignments.html">Assignments</a>
-<a href="news.html">News</a>
-</div>
+    <section class="qa-list">
 
-</div>
+      <article class="qa-card">
+        <h2>مين إحنا؟</h2>
+        <p>
+          احنا <span class="codix-accent">CODI.X</span>، فريق طلابي تطوعي بيحاول يغيّر
+          شكل تعلم البرمجة والتقنية داخل الكلية، ويخلي التعلم قائم على
+          <span class="codix-accent">الفهم والمنطق والإبداع</span> مش مجرد حفظ خطوات.
+        </p>
+      </article>
 
-<!-- ARTICLE -->
-<div class="article">
+      <article class="qa-card">
+        <h2>هدفنا إيه؟</h2>
+        <p>
+          هدفنا نبني <span class="codix-accent">مبرمج فاهم</span>، مش صنايعي كود.
+          شخص يعرف هو بيعمل إيه وليه، ويفهم كل جزء حتى لو صغير،
+          ويقدر يفكر ويحل مشاكل ويبتكر.
+        </p>
+      </article>
 
-<img src="images/codix.jpg">
+      <article class="qa-card">
+        <h2>بنقدّم إيه؟</h2>
+        <ul>
+          <li>ورش عمل مجانية 100%</li>
+          <li>تطبيق عملي ومشاريع حقيقية</li>
+          <li>محتوى في البرمجة والويب والموبايل</li>
+          <li>مسارات في الذكاء الاصطناعي والأمن السيبراني</li>
+          <li>اهتمام بالتصميم وواجهة المستخدم</li>
+          <li>فعاليات تقنية على مدار السنة</li>
+        </ul>
+      </article>
 
-<h1>مين CODI.X ؟</h1>
+      <article class="qa-card">
+        <h2>ليه CODI.X؟</h2>
+        <p>
+          لأننا مش بنقدّم محتوى نظري وخلاص، لكن بنوفّر
+          <span class="codix-accent">بيئة تعلم حقيقية</span>
+          تساعد أي طالب يبدأ صح، ويتطور أسرع، ويبني نفسه وسط مجتمع عنده نفس الشغف.
+        </p>
+      </article>
 
-<p>💻🚀 CODI.X – بنفهم وهنخليك تفهم</p>
+      <article class="qa-card">
+        <h2>إيه اللي بيميزنا؟</h2>
+        <p>
+          كل اللي بنقدمه <span class="codix-accent">مجاني وتطوعي</span>،
+          وهدفه بناء مجتمع قوي داخل الكلية يخرّج ناس فاهمة المجال بعمق،
+          وتقدر تنافس فعلًا.
+        </p>
+      </article>
 
-<h2>👥 مين إحنا؟</h2>
+      <article class="qa-card">
+        <h2>رسالتنا في سطر واحد؟</h2>
+        <p>
+          بنبني شخص <span class="codix-accent">يفهم قبل ما يكتب</span>،
+          ويفكر قبل ما ينفذ، علشان يبقى مبرمج حقيقي.
+        </p>
+      </article>
 
-<p>
-احنا تيم CODI.X تيم تطوعي تابع لكلية الحاسبات والذكاء الاصطناعي – جامعة سوهاج
-تجمعنا فكرة واحدة إننا نغيّر الصورة النمطية عن البرمجة والتقنية جوّه الكلية
-ونخلّي التعلم مش بس “كود بيتكتب” لكن تفكير ومنطق وإبداع
-</p>
+    </section>
 
-<p>
-احنا مجموعة طلبة قررت إنها متستناش الظروف ولا تشتكي من النظام
-قررنا نبدأ نعلّم ونشارك ونبني مجتمع فاهم فعلاً مش حافظ خطوات
-</p>
+    <div class="codix-motto">
+      CODI.X – Learn • Build • Grow
+    </div>
+  </main>
 
-<h2>🎯 هدفنا</h2>
+  <footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow">CODI.X Platform</div>
+      <h3 style="margin:16px 0 10px">A programmer, not just a code mechanic</h3>
+      <!-- <p>A cleaner structure, stronger visual hierarchy, better responsiveness, and smoother animations across the full platform.</p> -->
+    </div>
+    <div>
+      <h4 style="margin-top:0">Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="margin-top:0">Connect</h4>
+      <div class="socials">
+        <a class="social-link" href="https://www.facebook.com/share/1Fq2WD6ush/" aria-label="Facebook">f</a>
+        <a class="social-link" href="https://www.instagram.com/mohamedfarid__37?igsh=bWw5bzZlazRscjZk" aria-label="Instagram">◎</a>
+        <a class="social-link" href="codixacadmy@gmail.com" aria-label="Email">@</a>
+      </div>
+      <p style="margin-top:14px">© 2026 CODI.X Team — All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+<script src="scripts/common.js"></script>
 
-<p>
-هدفنا نطلّع ناس فاهمة بتعمل إيه وليه
-ناس مش بس بتعرف تكتب كود لكن تعرف تفكر وتبتكر وتحل مشاكل
-</p>
+</body></html>
 
-<p>
-عايزين نساعد أي حد عنده شغف بالمجال إنه يبدأ صح
-ويتعلم بالطريقة اللي تخليه فعلاً مميز وسط أي منافسة
-</p>
-
-<h2>⚡ بنقدملك إيه؟</h2>
-
-<p>
-📍 ورش عمل (Workshops) مجانية 100% في مجالات مختلفة منها
-</p>
-
-<p>
-💻 البرمجة والتطوير<br>
-🤖 الذكاء الاصطناعي<br>
-🔐 الأمن السيبراني<br>
-🎨 التصميم وواجهة المستخدم<br>
-🌐 تطوير الويب والموبايل
-</p>
-
-<p>
-كل ورشة بنقدّمها بتكون عملية يعني تطلع منها بشغل حقيقي
-تقدر تستخدمه أو تحطه في بورتفوليو
-وكمان بننظّم إيفنتات تقنية وتعليمية على مدار السنة
-علشان تكتسب خبرة وتتعرف على ناس عندها نفس الشغف والطموح
-</p>
-
-<h2>💬 ليه تتابعنا؟</h2>
-
-<p>
-لأننا ببساطة مش بنقدّم "محتوى"
-احنا بنقدّم فرصة تتطور فعلاً وتتعلم من ناس زيك بدأت من نفس مكانك
-وتوصل أسرع لأنك في بيئة بتدعمك وتفهمك
-</p>
-
-<p>
-هتتعلم وتشتغل وتبني وتكتشف نفسك أكتر معانا
-وكل ده مجاني وتطوعي 100% — بدافع الشغف
-</p>
-
-<h2>🚀 ختامًا</h2>
-
-<p>
-CODI.X مش مجرد تيم جامعي
-دي فكرة ومجتمع بيحاول يغيّر مفهوم التعلم في الكلية
-لو عندك شغف حقيقي مكانك معانا سواء كمتابع أو كعضو
-</p>
-
-<p>
-📍 CODI.X – Learn. Build. Grow.
-</p>
-
-</div>
-
-</body>
-</html>

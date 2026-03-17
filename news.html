@@ -1,332 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>News - CODI.X TEAM</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-/* GENERAL */
-
-body{
-margin:0;
-font-family:"Poppins",sans-serif;
-background:#12000a;
-color:white;
-}
-
-/* NAVBAR */
-
-.site-header{
-position:sticky;
-top:0;
-backdrop-filter:blur(8px);
-background:rgba(0,0,0,0.4);
-padding:10px 0;
-z-index:1000;
-}
-
-.nav-inner{
-width:90%;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.brand img{
-width:40px;
-}
-
-.main-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-margin:0;
-padding:0;
-}
-
-.main-nav a{
-color:white;
-text-decoration:none;
-font-weight:500;
-transition:0.3s;
-}
-
-.main-nav a:hover{
-color:#ff4d8a;
-}
-
-/* PAGE TITLE */
-
-.section-title{
-text-align:center;
-font-size:32px;
-margin-top:40px;
-font-weight:700;
-}
-
-.section-sub{
-text-align:center;
-color:#caa3b2;
-margin-top:10px;
-}
-
-/* NEWS GRID */
-
-.news-container{
-width:90%;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-/* NEWS CARD */
-
-.news-card{
-background:#3a001f;
-border-radius:14px;
-overflow:hidden;
-transition:0.3s;
-}
-
-.news-card:hover{
-transform:translateY(-6px);
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
-
-.news-card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.news-content{
-padding:18px;
-}
-
-.news-content h3{
-margin:0;
-margin-bottom:10px;
-}
-
-.news-content p{
-color:#caa3b2;
-font-size:14px;
-}
-
-.news-btn{
-display:inline-block;
-margin-top:10px;
-padding:8px 16px;
-background:#ff4d8a;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-size:14px;
-}
-
-.news-btn:hover{
-background:#ff2e74;
-}
-
-/* ================================
-   GLOBAL RESPONSIVE FIX
-================================ */
-
-/* الصور متكبرش عن الكرت */
-/* img{
-max-width:100%;
-height:auto;
-display:block;
-} */
-
-/* الصور العامة */
-img{
-max-width:100%;
-height:auto;
-}
-
-/* صور الكروت في المنتصف */
-.course-card img{
-display:block;
-margin:0 auto 15px auto;
-}
-
-/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
-.nav-inner{
-flex-wrap:wrap;
-}
-
-/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
-@media (max-width:768px){
-
-.main-nav{
-width:100%;
-margin-top:10px;
-}
-
-.main-nav ul{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-padding:0;
-}
-
-.main-nav a{
-font-size:14px;
-}
-
-/* يقلل المسافات */
-.wrap,
-.container{
-width:95%;
-}
-
-/* يخلي الكروت تملى الشاشة */
-.courses-container{
-grid-template-columns:1fr;
-}
-
-/* أي جريد تانية */
-.cards,
-.grid,
-.items{
-grid-template-columns:1fr !important;
-}
-
-}
-
-/* موبايلات أصغر */
-@media (max-width:480px){
-
-.page-title{
-font-size:22px;
-}
-
-.brand h2{
-font-size:18px;
-}
-
-}
-</style>
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News | CODI.X TEAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css"><link rel="stylesheet" href="styles/news.css">
 </head>
-
-
 <body>
 
-
 <header class="site-header">
-
-<div class="nav-inner">
-
-<div class="brand">
-<img src="./images/logo.jpg">
-<h2>CODI.X</h2>
-</div>
-
-<nav class="main-nav">
-<ul>
-
-<li><a href="index.html">Home</a></li>
-<li><a href="courses.html">Courses</a></li>
-<li><a href="contact.html">contact</a></li>
-<!-- <li><a href="news.html">News</a></li> -->
-<li><a href="assignments.html">assignments</a></li>
-
-</ul>
-</nav>
-
-</div>
-
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img src="images/logo.jpg" alt="CODI.X logo">
+      <div class="brand-copy">
+        <h1>CODI.X TEAM</h1>
+        <small>Faculty of Computers &amp; AI — Sohag University</small>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul><li><a href="index.html" class="">Home</a></li><li><a href="courses.html" class="">Courses</a></li><li><a href="assignments.html" class="">Assignments</a></li><li><a href="news.html" class="active">News</a></li><li><a href="index.html#contact" class="">Contact</a></li></ul>
+    </nav>
+  </div>
 </header>
+<main class="page-shell">
+  <section class="hero-mini wrap center reveal">
+    <div class="eyebrow">Community updates</div>
+    <h1 class="page-title">Latest News</h1>
+    
+  </section>
+  <section class="section-tight">
+    <div class="wrap feature card reveal">
+      <div>
+        <span class="badge">Featured Story</span>
+        <h2 style="font-size:2.4rem;margin:14px 0 10px">Who is CODI.X?</h2>
+        <p class="muted">A stronger spotlight block helps the page feel editorial and premium instead of just a list of random cards.</p>
+        <div style="margin-top:18px"><a class="btn" href="codix-news.html">Read the Story</a></div>
+      </div>
+      <img src="images/how co.jpg" alt="Who is Codix">
+    </div>
+    <div class="wrap news-grid">
+      <article class="news-card card reveal">
+        <img src="images/how co.jpg" alt="Who is Codix">
+        <div class="news-content">
+          <span class="badge">Team Story</span>
+          <h3>مين كوديكس ؟</h3>
+          <p>   اكيد سمعت عن كوديكس بس تعرف احنا مين ؟ <p>
+          <a class="btn small" href="codix-news.html">Read More</a>
+        </div>
+      </article>
+      <article class="news-card card reveal">
+        <img src="images/مسابقه4.jpg" alt="Competition">
+        <div class="news-content">
+          <span class="badge">Event</span>
+          <h3>مسابقة Problem Solving &amp; Flowchart</h3>
+          <p>تغطية لواحدة من أهم فعاليات التيم داخل الكليه </p>
+          <a class="btn small" href="ch.html">Read More</a>
+        </div>
+      </article>
+      <article class="news-card card reveal">
+        <img src="images/int1.jpg" alt="Interviews">
+        <div class="news-content">
+          <span class="badge">Opportunities</span>
+          <h3>انترفيوهات كوديكس</h3>
+          <p>رحلة اختبار أبطال كوديكس وخطوة جديدة لبناء فريق أقوى</p>
+          <a class="btn register-btn closed" href="#">Registration Closed</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
 
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow">CODI.X Platform</div>
+      <h3 style="margin:16px 0 10px">A programmer, not just a code mechanic</h3>
+      
+    </div>
+    <div>
+      <h4 style="margin-top:0">Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="margin-top:0">Connect</h4>
+      <div class="socials">
+        <a class="social-link" href="https://www.facebook.com/share/1Fq2WD6ush/" aria-label="Facebook">f</a>
+        <a class="social-link" href="https://www.instagram.com/mohamedfarid__37?igsh=bWw5bzZlazRscjZk" aria-label="Instagram">◎</a>
+        <a class="social-link" href="codixacadmy@gmail.com" aria-label="Email">@</a>
+      </div>
+      <p style="margin-top:14px">© 2026 CODI.X Team — All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+<script src="scripts/common.js"></script>
 
-
-<h1 class="section-title">Latest News</h1>
-<p class="section-sub">Latest updates from CODI.X Team</p>
-
-
-
-<div class="news-container">
-
-
-<div class="news-card">
-
-<img src="./images/how co.jpg">
-
-<div class="news-content">
-
-<h3>مين كوديكس ؟</h3>
-<p>اكيد سمعت عن كويكس بس تعرف احنا مين كويس !</p>
-
-
-
-<a href="codix-news.html" class="news-btn">Read More</a>
-
-</div>
-
-</div>
-
-
-
-<div class="news-card">
-
-<img src="./images//مسابقه4.jpg">
-
-<div class="news-content">
-
-<h3>مسابقه كوديكس </h3>
-
-<p>Problem Solving & FlowChart</p>
-
-<a href="ch.html" class="news-btn">Read More</a>
-
-</div>
-
-</div>
-
-
-
-<div class="news-card">
-
-<img src="./images/int1.jpg">
-
-<div class="news-content">
-
-<h3>انترفيوهات كوديكس </h3>
-
-<p>
-رحلخ اختبار ابطال كوديكس خليك جزء من الحكايه
-</p>
-
-<a href="#" class="news-btn">Registration closed </a>
-
-</div>
-
-</div>
-
-
-
-</div>
-
-
-
-</body>
-</html>
+</body></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment Exam | CODI.X TEAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css"><link rel="stylesheet" href="styles/exam.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img src="images/logo.jpg" alt="CODI.X logo">
+      <div class="brand-copy">
+        <h1>CODI.X TEAM</h1>
+        <small>Faculty of Computers &amp; AI — Sohag University</small>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul><li><a href="index.html" class="">Home</a></li><li><a href="courses.html" class="">Courses</a></li><li><a href="assignments.html" class="active">Assignments</a></li><li><a href="news.html" class="">News</a></li><li><a href="index.html#contact" class="">Contact</a></li></ul>
+    </nav>
+  </div>
+</header>
+<main class="page-shell">
+  <section class="article-hero wrap center reveal">
+    <div class="eyebrow">Assessment</div>
+    <h1 class="page-title">Assignment Exam</h1>
+    <p class="page-sub">A redesigned quiz page with better spacing, better readability, and a friendlier student experience.</p>
+  </section>
+  <article class="article card reveal">
+    <div id="login">
+      <input type="text" id="studentName" placeholder="Enter your name">
+      <button class="btn" onclick="startExam()">Start Exam</button>
+    </div>
+    <div id="exam" style="display:none; margin-top:24px;">
+      <div class="question">
+        <h3>1- What does HTML stand for?</h3>
+        <label><input type="radio" name="q1" value="0"> Hyper Tool Machine Language</label>
+        <label><input type="radio" name="q1" value="1"> Hyper Text Markup Language</label>
+        <label><input type="radio" name="q1" value="0"> High Text Machine Language</label>
+      </div>
+      <div class="question">
+        <h3>2- Which language styles web pages?</h3>
+        <label><input type="radio" name="q2" value="0"> HTML</label>
+        <label><input type="radio" name="q2" value="1"> CSS</label>
+        <label><input type="radio" name="q2" value="0"> Python</label>
+      </div>
+      <div class="question">
+        <h3>3- Which language runs in the browser?</h3>
+        <label><input type="radio" name="q3" value="1"> JavaScript</label>
+        <label><input type="radio" name="q3" value="0"> Python</label>
+        <label><input type="radio" name="q3" value="0"> C++</label>
+      </div>
+      <button class="btn" onclick="submitExam()">Submit Exam</button>
+      <div class="result" id="result" style="display:none"></div>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow">CODI.X Platform</div>
+      <h3 style="margin:16px 0 10px">A programmer, not just a code mechanic</h3>
+
+    </div>
+    <div>
+      <h4 style="margin-top:0">Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="margin-top:0">Connect</h4>
+      <div class="socials">
+        <a class="social-link" href="#" aria-label="Facebook">f</a>
+        <a class="social-link" href="#" aria-label="Instagram">◎</a>
+        <a class="social-link" href="#" aria-label="Email">@</a>
+      </div>
+      <p style="margin-top:14px">© 2026 CODI.X Team — All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+<script src="scripts/common.js"></script>
+
+<script>
+function startExam(){
+  const name = document.getElementById("studentName").value.trim();
+  if(!name){ alert("Please enter your name"); return; }
+  document.getElementById("login").style.display="none";
+  document.getElementById("exam").style.display="block";
+}
+function submitExam(){
+  const answers = document.querySelectorAll("input[type=radio]:checked");
+  if(answers.length < 3){ alert("Please answer all questions"); return; }
+  let score = 0;
+  answers.forEach(a => score += parseInt(a.value,10));
+  const name = document.getElementById("studentName").value.trim();
+  const result = document.getElementById("result");
+  result.style.display = "block";
+  result.innerHTML = `<strong>${name}</strong>, your score is <strong>${score} / 3</strong>.`;
+}
+</script>
+</body></html>

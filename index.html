@@ -1,656 +1,370 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CODI.X TEAM — Professional</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- style sheet -->
-<style>
-  :root{
-    --bg-1:#12000a;         /* deep burgundy */
-    --bg-2:#2a0018;         /* panel */
-    --card:#3a001f;
-    --accent:#ff4d8a;       /* pink accent */
-    --accent-2:#ffb7d0;     /* light pink */
-    --gold:#ffd36b;
-    --muted:#caa3b2;
-    --glass: rgba(255,255,255,0.03);
-    --radius:14px;
-  }
-
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial,sans-serif;
-    background: linear-gradient(180deg,var(--bg-1), #170010 120%);
-    color:#fff;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow-x:hidden;
-    line-height:1.45;
-  }
-
-  /* container helper */
-  .wrap{width:calc(100% - 40px); max-width:1200px; margin:0 auto;}
-
-  /* NAV */
-  header.site-header{
-    position:sticky; top:0; z-index:9999;
-    backdrop-filter: blur(6px);
-    background: linear-gradient(90deg, rgba(10,10,12,0.25), rgba(20,8,12,0.15));
-    border-bottom: 1px solid rgba(255,77,138,0.04);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
-  .brand{display:flex;align-items:center;gap:14px}
-  .brand img{width:56px;height:56px;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-  .brand h1{font-size:20px;margin:0;color:var(--gold);letter-spacing:0.6px}
-  nav.main-nav ul{display:flex;gap:12px;list-style:none;margin:0}
-  nav.main-nav a{display:inline-block;padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600;transition:all .22s ease}
-  nav.main-nav a:hover{color:var(--accent);transform:translateY(-2px)}
-  nav.main-nav a.active{color:var(--gold);background:linear-gradient(90deg, rgba(255,77,138,0.06), rgba(255,77,138,0.03))}
-
-  /* HERO */
-  .hero{
-    padding:80px 0 40px;
-    position:relative;
-  }
-  .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
-  .hero-title{font-size:40px;color:var(--gold);margin-bottom:12px}
-  .hero-lead{color:var(--muted);font-size:18px;max-width:70ch}
-  .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,0.5)}
-  .cta-row{display:flex;gap:12px;margin-top:16px}
-  .btn{background:linear-gradient(90deg,var(--accent), #ff6aa6);border:none;color:white;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(255,77,138,0.12);transition:all .18s}
-  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--gold)}
-
-  /* SECTIONS TITLE */
-  .section-title{font-size:30px;color:var(--accent-2);text-align:center;margin-top:24px;margin-bottom:6px}
-  .section-sub{color:var(--muted);text-align:center;margin-bottom:20px}
-
-  /* HIERARCHY AREA */
-  .hierarchy{padding:30px 0 80px}
-  .stack{display:flex;flex-direction:column;align-items:center;gap:28px}
-  .tier{
-    width:100%;
-    background:linear-gradient(180deg,var(--card), var(--panel, #2b0018));
-    border-radius:var(--radius);
-    padding:22px;
-    max-width:1000px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.45);
-    border:1px solid rgba(255,77,138,0.05);
-    transform-origin:center;
-    transition:transform .35s ease, box-shadow .35s ease;
-  }
-  .tier:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(0,0,0,0.55)}
-  .tier .row{display:flex;gap:26px;align-items:center;justify-content:center;flex-wrap:wrap}
-  .profile{
-    width:220px;text-align:center;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
-    padding:12px;border-radius:12px;border:1px solid rgba(255,77,138,0.04);
-  }
-  .profile img{width:180px;height:180px;border-radius:12px;object-fit:cover;margin-bottom:10px;box-shadow:0 8px 20px rgba(0,0,0,0.45)}
-  .profile h4{margin:6px 0;color:var(--accent-2)}
-  .profile p{color:var(--muted);font-size:14px}
-
-  /* make CEO distinct */
-  .tier.ceo{background:linear-gradient(180deg,#4b001f,#3b0018);border:1px solid rgba(255,211,107,0.06)}
-  .tier.ceo .profile h4{color:var(--gold)}
-
-  /* make leader row smaller panels horizontally */
-  .leader-row .profile{width:200px}
-  .two-profiles{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-
-  /* COURSES / ASSIGNMENTS cards */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
-  .card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    padding:16px;border-radius:12px;border:1px solid rgba(255,77,138,0.04);
-  }
-  .card h3{margin:0 0 8px;color:var(--accent-2)}
-  .card p{color:var(--muted);font-size:14px;margin-bottom:12px}
-  .card .actions{display:flex;gap:8px;justify-content:flex-end}
-  .link{color:var(--accent);font-weight:700;text-decoration:none}
-
-  /* MODAL details */
-  .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
-  .modal{background:linear-gradient(180deg,#1f0012,#2d0018);padding:18px;border-radius:12px;max-width:780px;width:100%;box-shadow:0 30px 50px rgba(0,0,0,0.7);border:1px solid rgba(255,77,138,0.06)}
-  .modal h3{color:var(--gold);margin-bottom:8px}
-  .modal p{color:var(--muted);line-height:1.6}
-  .modal .close{float:right;background:transparent;border:none;color:var(--accent-2);font-weight:700;font-size:18px;cursor:pointer}
-
-  /* SOCIAL ICONS (footer) */
-  .socials{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:12px}
-  .socials a{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:var(--gold);transition:transform .22s, background .22s}
-  .socials a:hover{transform:translateY(-6px) rotate(6deg);background:linear-gradient(90deg,var(--accent),#ff6aa6);color:#fff}
-
-  footer.site-footer{padding:30px 0;margin-top:40px;background:transparent;border-top:1px solid rgba(255,255,255,0.03)}
-  footer .legal{color:var(--muted);text-align:center}
-
-  /* reveal on scroll */
-  [data-reveal]{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.2,.9,.3,1)}
-  [data-reveal].visible{opacity:1;transform:none}
-
-  /* responsive */
-  @media (max-width: 900px){
-    .hero-grid{grid-template-columns:1fr}
-    .profile img{width:140px;height:140px}
-    .profile{width:180px}
-  }
-  @media (max-width:600px){
-    nav.main-nav{display:none} /* could add mobile menu later */
-    .wrap{width:calc(100% - 24px)}
-    .hero-title{font-size:28px}
-  }
-
-/* ================================
-   GLOBAL RESPONSIVE FIX
-================================ */
-
-/* الصور متكبرش عن الكرت */
-/* img{
-max-width:100%;
-height:auto;
-display:block;
-} */
-
-/* الصور العامة */
-img{
-max-width:100%;
-height:auto;
-}
-
-/* صور الكروت في المنتصف */
-.course-card img{
-display:block;
-margin:0 auto 15px auto;
-}
-
-/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
-.nav-inner{
-flex-wrap:wrap;
-}
-
-/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
-@media (max-width:768px){
-
-.main-nav{
-width:100%;
-margin-top:10px;
-}
-
-.main-nav ul{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-padding:0;
-}
-
-.main-nav a{
-font-size:14px;
-}
-
-/* يقلل المسافات */
-.wrap,
-.container{
-width:95%;
-}
-
-/* يخلي الكروت تملى الشاشة */
-.courses-container{
-grid-template-columns:1fr;
-}
-
-/* أي جريد تانية */
-.cards,
-.grid,
-.items{
-grid-template-columns:1fr !important;
-}
-
-}
-
-/* موبايلات أصغر */
-@media (max-width:480px){
-
-.page-title{
-font-size:22px;
-}
-
-.brand h2{
-font-size:18px;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CODI.X TEAM | Tech Community Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap nav-inner">
-    <div class="brand" style="gap:12px">
-      <img src="images/logo.jpg" alt="CODI.X logo" />
-      <div>
+    <a class="brand" href="index.html">
+      <img src="./images/logo.jpg" alt="CODI.X logo">
+      <div class="brand-copy">
         <h1>CODI.X TEAM</h1>
-        <div style="font-size:12px;color:var(--muted)">Faculty of Computers & AI — Sohag University</div>
+        <small>Faculty of Computers &amp; AI — Sohag University</small>
       </div>
-    </div>
-
-        <!-- nav p -->
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <nav class="main-nav" aria-label="Main navigation">
-      <ul>
-        <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="courses.html" class="nav-link">Courses</a></li>
-        <li><a href="assignments.html" class="nav-link">Assignments</a></li>
-        <li><a href="news.html" class="nav-link">News</a></li>
-        <!-- <li><a href="#pr" class="nav-link">PR</a></li> -->
-        <!-- <li><a href="#media" class="nav-link">Media</a></li> --> -->
-        <!-- <li><a href="#contact" class="nav-link">Contact</a></li> -->
-      </ul>
+      <ul><li><a href="index.html" class="active">Home</a>
+      </li><li><a href="courses.html" class="">Courses</a>
+      </li><li><a href="assignments.html" class="">Assignments</a>
+      </li><li><a href="news.html" class="">News</a>
+      </li><li><a href="index.html#contact" class="">Contact</a>
+      </li></ul>
     </nav>
   </div>
 </header>
-
-<!-- HERO -->
-
-<section id="home" class="wrap hero" data-reveal>
-  <div class="hero-grid">
-    <div>
-      <div class="hero-title">مبرمج مش صنايعي كود </div>
-      <div class="hero-lead" style="margin-top:8px">
-        Academic Tech Team affiliated with the Faculty of Computers and Artificial Intelligence, Sohag University, founded by Eng. Mohamed Farid, a student at the Faculty of 
-        Computers and Artificial Intelligence.
-      </div>
-
-      <div class="cta-row" style="margin-top:18px">
-        <!-- <button class="btn" href="courses.html" id="view-courses">View Courses</button> -->
-        <a class="btn ghost" href="assignments.html">Assignments</a>
-      </div>
-    </div>
-
-    <!-- websit statistics -->
-
-    <aside class="hero-card" data-reveal>
-      <strong style="color:var(--accent-2)">Quick stats</strong>
-      <div style="margin-top:10px;color:var(--muted)">
-        <div>Courses: <strong style="color:var(--gold)">5</strong></div>
-        <div>Active Students: <strong style="color:var(--gold)">600+</strong></div>
-        <div>Instructors: <strong style="color:var(--gold)">5</strong></div>
-      </div>
-    </aside>
-  </div>
-</section>
-
-
-<!-- HIERARCHY / TEAM -->
-
-<section class="wrap hierarchy" id="structure">
-  <div class="section-title" data-reveal>Team Hierarchy</div>
-  <!-- <div class="section-sub" data-reveal>CEO at top, followed by leadership and department teams</div> -->
-
-  <div class="stack" style="margin-top:28px">
-
-    <!-- CEO -->
-
-    <div class="tier ceo" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--gold)">CEO</strong></div>
-      <div class="row">
-        <div class="profile">
-          
-          <img src="images/farid 3.jpg" alt="CEO">
-          <h4>Mohamed Farid</h4>
-          <p> Founder</p>
+<main>
+  <section class="hero wrap">
+    <div class="hero-orb"></div>
+    <div class="hero-orb-2"></div>
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Volunteer Tech Team • Real Learning • Real Community</div>
+        <h2>Build your tech future with <span style="background:linear-gradient(135deg,#93c5fd,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent;">CODI.X</span></h2>
+        
+        <div class="cta-row">
+          <a class="btn" href="courses.html">Explore Courses</a>
+          <a class="btn secondary" href="#structure" data-scroll="#structure">Meet The Team</a>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-box card"><strong>12+</strong><span class="muted">Courses roadmap</span></div>
+          <div class="stat-box card"><strong>250+</strong><span class="muted">Students reached</span></div>
+          <div class="stat-box card"><strong>8</strong><span class="muted">Active instructors</span></div>
         </div>
       </div>
+      <aside class="hero-panel glass reveal">
+        <span class="badge">Why CODI.X is Different</span>
+        <div class="kpis">
+          <div class="kpi"><span>We explain the logic behind every concept</span><strong>✓</strong></div>
+          <div class="kpi"><span>We focus on real understanding, not memorizing syntax</span><strong>✓</strong></div>
+          <div class="kpi"><span>Friendly learning environment and supportive community</span><strong>✓</strong></div>
+          <div class="kpi"><span>Continuous support and follow-up with students</span><strong>✓</strong></div>
+        </div>
+      </aside>
     </div>
+  </section>
 
-    <!-- Leader & Co-Leader -->
+  <!-- <section class="section-tight">
+    <div class="wrap about-grid">
+      <article class="about-card card reveal">
+        <div class="eyebrow">About the platform</div>
+        <h3 class="section-title" style="font-size:2rem;margin-top:16px">Designed for students, not just screens.</h3>
+        <p class="muted">The platform helps students discover available courses, check assignments, follow team news, and understand the structure of CODI.X in a polished way.</p>
+        <div class="value-list">
+          <div class="value-item"><div class="icon-pill">⚡</div><div><strong>Fast first impression</strong><div class="muted">A hero section that instantly explains the value of the team.</div></div></div>
+          <div class="value-item"><div class="icon-pill">📱</div><div><strong>Mobile-ready</strong><div class="muted">Cards stack properly, spacing is cleaner, and buttons stay usable on small screens.</div></div></div>
+          <div class="value-item"><div class="icon-pill">🎯</div><div><strong>Clear user journey</strong><div class="muted">Users can move from home to courses, assignments, and news without confusion.</div></div></div>
+        </div>
+      </article>
+      <article class="value-card card reveal">
+        <div class="eyebrow">Platform highlights</div>
+        <h3 class="section-title" style="font-size:2rem;margin-top:16px">A visual identity that fits a tech team.</h3>
+        <p class="muted">The color system now feels more like a real startup or developer community. The design stays strong without becoming noisy or over-decorated.</p>
+        <div class="value-list">
+          <div class="value-item"><div class="icon-pill">🎨</div><div><strong>Modern palette</strong><div class="muted">Deep navy backgrounds + blue/cyan accents make the brand feel professional.</div></div></div>
+          <div class="value-item"><div class="icon-pill">🧩</div><div><strong>Reusable components</strong><div class="muted">Buttons, cards, badges, and sections now feel consistent on every page.</div></div></div>
+          <div class="value-item"><div class="icon-pill">✨</div><div><strong>Smooth animations</strong><div class="muted">Hover effects and reveal-on-scroll add life without hurting readability.</div></div></div>
+        </div>
+      </article>
+    </div>
+  </section> -->
 
-    <div class="tier leader-row" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--accent-2)">Leaders</strong></div>
-      <div class="row">
-        <div class="profile">
-          <img src="images/ali ayman.jpg" alt="Leader">
-          <h4>Ali Ayman </h4>
+  <section class="section" id="structure">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Team hierarchy</div>
+          <h3 class="section-title" style="margin-bottom:6px">Meet the people behind CODI.X</h3>
+          <!-- <p class="section-sub" style="margin:0;max-width:620px">A clearer, more premium presentation of the team makes the platform feel real, organized, and trustworthy.</p> -->
+        </div>
+      </div>
+
+
+      <div class="leadership-grid">
+        <article class="leader-card card reveal">
+          <img src="./images/farid 3.jpg " alt="Mohamed Farid">
+          <h3>Mohamed Farid</h3>
+          <p>Founder & CEO</p>
+          <div class="role-tag badge">Leadership</div>
+        </article>
+        
+        
+        <article class="leader-card card reveal">
+          <img src="./images/ali ayman.jpg " alt="Ali Ayman">
+          <h3>Ali Ayman</h3>
           <p>Team Leader</p>
-        </div>
-
-        <div class="profile">
-          <img src="images/hatem2.jpg" alt="Co-Leader">
-          <h4> Mohamed Hatem</h4>
+          <div class="role-tag badge">Management</div>
+        </article>
+        
+        
+        <article class="leader-card card reveal">
+          <img src="images/hatem.jpg" alt="Mohamed Hatem">
+          <h3>Mohamed Hatem</h3>
           <p>Co-Leader</p>
-        </div>
+          <div class="role-tag badge">Management</div>
+        </article>
+        
+        
+        <article class="leader-card card reveal">
+          <img src="./images/nasry.jpg" alt="Mohamed Ali">
+          <h3>Mohamed Ali</h3>
+          <p>AI & Front-end Instructor</p>
+          <div class="role-tag badge">Instructor</div>
+        </article>
+
+
+        <article class="leader-card card reveal">
+          <img src="./images/abdo.jpg" alt="Abdelrhman Mohamed">
+          <h3>Abdelrhman Mohamed </h3>
+          <p> English </p>
+          <div class="role-tag badge">Instructor</div>
+        </article>
+
+
+        <article class="leader-card card reveal">
+          <img src="./images/abdelafar.jpg" alt="AbdulGhaffar Mohamed">
+          <h3>AbdulGhaffar Mohamed </h3>
+          <p> Programming Basics </p>
+          <div class="role-tag badge">Instructor</div>
+        </article>
+
+
+        <article class="leader-card card reveal">
+          <img src="./images/rolaa.jpg" alt="Rola Refat">
+          <h3>Rola Refat</h3>
+          <p>Flutter Instructor</p>
+          <div class="role-tag badge">Instructor</div>
+        </article>
+
+
+        <article class="leader-card card reveal">
+          <img src="./images/mariam.jpg" alt="Mariam Shenouda">
+          <h3>Mariam Shenouda</h3>
+          <p>Flutter Instructor</p>
+          <div class="role-tag badge">Instructor</div>
+        </article>
+
+        <article class="leader-card card reveal">
+          <img src="images/zeeego.jpg" alt="Zeyad Mahmoud">
+          <h3>Zeyad Mahmoud</h3>
+          <p>Head HR</p>
+          <div class="role-tag badge">HR</div>
+        </article>
+ 
+        <article class="leader-card card reveal">
+          <img src="images/nour.jpg" alt="Nour Ashraf">
+          <h3>Nour Ashraf</h3>
+          <p>Vice HR</p>
+          <div class="role-tag badge">HR</div>
+        </article>
+
+
+        <article class="leader-card card reveal">
+          <img src="images/manar.jpg" alt="Manar Rateb">
+          <h3>Manar Rateb </h3>
+          <p>Head PR</p>
+          <div class="role-tag badge">PR</div>
+        </article>
+
+
+        <article class="leader-card card reveal">
+          <img src="images/farag.jpg" alt="Manar Rateb">
+          <h3>Mohamed Farag </h3>
+          <p>Vice PR</p>
+          <div class="role-tag badge">PR</div>
+        </article>
+
+
+         <article class="leader-card card reveal">
+          <img src="images/mina.jpg" alt="mina habib">
+          <h3>Mina Habib</h3>
+          <p>Head OR</p>
+          <div class="role-tag badge">Operations</div>
+        </article>
+        
+        <article class="leader-card card reveal">
+          <img src="images/ruaa.jpg" alt="Ruaa Yasser">
+          <h3>Ruaa Yasser</h3>
+          <p>Vice OR</p>
+          <div class="role-tag badge">Operations</div>
+        </article>
+        
+        <article class="leader-card card reveal">
+          <img src="images/shahd.jpg" alt="shahd galal">
+          <h3>Shahd Galal</h3>
+          <p>Social Media Manager</p>
+          <div class="role-tag badge">Media</div>
+        </article>
+        
+        <article class="leader-card card reveal">
+          <img src="images/bavly.jpg" alt="Bavly Hany">
+          <h3>Bavly Hany</h3>
+          <p>Graphic Designer</p>
+          <div class="role-tag badge">Media</div>
+        </article>
+
       </div>
     </div>
+  </section>
 
-    <!-- HR -->
 
-    <section id="hr" class="tier" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--accent-2)">HR Section</strong></div>
-      <div class="row">
-        <div class="two-profiles">
-          <div class="profile">
-            <img src="images/zeego2.jpg" alt="HR Member 1">
-            <h4>Zeyad Mahmoud</h4>
-            <p>Head HR </p>
-          </div>
 
-          <div class="profile">
-            <img src="images/nour.jpg" alt="HR Member 2">
-            <h4>Nour Ashraf </h4>
-            <p>Vice HR</p>
-          </div>
+
+
+<!-- courses in con pag  -->
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Courses preview</div>
+          <!-- <h3 class="section-title" style="margin-bottom:6px">A cleaner course display = stronger trust</h3> -->
         </div>
-      </div>
-    </section>
-
-    <!-- PR -->
-
-    <section id="pr" class="tier" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--accent-2)">PR Section</strong></div>
-      <div class="row">
-        <div class="two-profiles">
-          <div class="profile">
-            <img src="images/manar.jpg" alt="PR 1">
-            <h4>Manar Rateb </h4>
-            <p>Head PR</p>
-          </div>
-
-          <div class="profile">
-            <img src="images/farag.jpg" alt="PR 2">
-            <h4>Mohamed Farag</h4>
-            <p>Vice PR</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Instructors -->
-
-    <section id="instructors" class="tier" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--accent-2)">Instructors</strong></div>
-      <div class="row">
-        <div class="profile">
-          <img src="images/nasry.jpg" alt="Instructor 1">
-          <h4>Mohamed Ali</h4>
-          <p> AI & Front-end</p>
-        </div>
-
-        <div class="profile">
-          <img src="images/abdo.jpg" alt="Instructor 2">
-          <h4>  Abdelrahman Mohamed</h4>
-          <p> English basics trainer</p>
-        </div>
-      
-
-      <div class="profile">
-                <img src="images/abdelafar.jpg" alt="Instructor 3">
-                <h4> AbdulGhaffar Mohammad</h4>
-                <p> Programming Basics & Flutter</p>
-            </div>
-      
-
-        <div class="profile">
-                <img src="images/rolaa.jpg" alt="Instructor 3">
-                <h4> Rola Refat</h4>
-                <p> Programming Basics & Flutter</p>
-            </div>
-       
-
-        <div class="profile">
-                <img src="images/mariam.jpg" alt="Instructor 3">
-                <h4> Mariam Shenoda</h4>
-                <p> Flutter</p>
-            </div>
-       </div>
-      
-    </section>
-
-
-    <!-- OR -->
-
-    <section id="or" class="tier" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--accent-2)"> OR Section</strong></div>
-      <div class="row">
-        <div class="two-profiles">
-          <div class="profile">
-            <img src="images/mm2.jpg" alt="Operations 1">
-            <h4>Mohamed Mahmoud </h4>
-            <p> Head OR</p>
-          </div>
-
-          <div class="profile">
-            <img src="images/ruaa.jpg" alt="Operations 2">
-            <h4>Ruaa Yasser </h4>
-            <p>Vice OR</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Media -->
-
-    <section id="media" class="tier" data-reveal>
-      <div style="text-align:center;margin-bottom:12px"><strong style="font-size:18px;color:var(--accent-2)">Media Team</strong></div>
-      <div class="row">
-        <div class="two-profiles">
-          <div class="profile">
-            <img src="images/sama3.jpg" alt="Media 1">
-            <h4>Sama Kamel </h4>
-            <p>Social Media Manager </p>
-          </div>
-
-          <div class="profile">
-            <img src="images/bavly.jpg" alt="Media 2">
-            <h4>Bavly Hany </h4>
-            <p>Graphic Designer</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- CONTACT -->
-<section id="contact" class="wrap" style="padding-bottom:80px">
-  <div class="section-title" data-reveal>Contact Us</div>
-  <div class="section-sub" data-reveal>Questions? Partnerships? Drop a message.</div>
-
-  <div style="max-width:900px;margin:18px auto;display:grid;grid-template-columns:1fr 320px;gap:20px" data-reveal>
-    <form id="contactForm" style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));padding:14px;border-radius:12px">
-      <label style="display:block;font-weight:600;margin-bottom:6px;color:var(--muted)">Name</label>
-      <input type="text" id="name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;margin-bottom:10px">
-
-      <label style="display:block;font-weight:600;margin-bottom:6px;color:var(--muted)">Email</label>
-      <input type="email" id="email" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;margin-bottom:10px">
-
-      <label style="display:block;font-weight:600;margin-bottom:6px;color:var(--muted)">Message</label>
-      <textarea id="message" rows="5" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff"></textarea>
-
-      <div style="margin-top:12px;text-align:right">
-        <button class="btn" type="submit">Send Message</button>
+        <a class="btn secondary small" href="courses.html">View all courses</a>
       </div>
 
-      <p id="formNotice" style="display:none;color:var(--accent-2);margin-top:10px"></p>
-    </form>
 
-    <!-- EMail -->
+      <div class="courses-grid">
+        <article class="course-preview card reveal">
+          <span class="badge">Beginner friendly</span>
+          <h3>Programming Basics</h3>
+          <p>Variables, loops, conditions, functions, and problem solving — the ideal entry point for students building real foundations.</p>
+          <div class="meta"><span>6 Weeks</span><span>Hands-on tasks</span><span>Starter track</span></div>
+          <a class="btn small" href="courses.html">See details</a>
+        </article>
 
-    <aside style="padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.03));">
-      <div style="font-weight:700;color:var(--accent-2)">Contact Info</div>
-      <div style="margin-top:8px;color:var(--muted)">Email: codixacademy.gmail.com</div>
-      <div style="margin-top:12px">
 
-        <!-- Follow -->
-        <div style="font-weight:700;color:var(--accent-2)">Follow us</div>
-        <div class="socials" style="margin-top:10px">
-          <!-- Facebook SVG -->
-          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" id="fb-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7h-2.5v-3h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.1 2.2.1v2.5h-1.3c-1.2 0-1.6.8-1.6 1.5V12h2.8l-.4 3h-2.4v7C18.3 21.1 22 17 22 12z"/></svg>
-          </a>
+        <article class="course-preview card reveal">
+          <span class="badge">Most requested</span>
+          <h3>Front-end Development</h3>
+          <p>HTML, CSS, JavaScript, responsive design, and professional project structure to help students ship cleaner websites.</p>
+          <div class="meta"><span>8 Weeks</span><span>Responsive UI</span><span>Project-based</span></div>
+          <a class="btn small" href="courses.html">See details</a>
+        </article>
 
-          <!-- Instagram SVG -->
-          <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" id="ig-link">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6.01 4.9.07 1.1.05 1.9.24 2.4.4.6.2 1.1.5 1.6 1 .5.5.8 1 .99 1.6.16.5.35 1.3.4 2.4.06 1.3.07 1.7.07 4.9s-.01 3.6-.07 4.9c-.05 1.1-.24 1.9-.4 2.4-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.5.16-1.3.35-2.4.4-1.3.06-1.7.07-4.9.07s-3.6-.01-4.9-.07c-1.1-.05-1.9-.24-2.4-.4-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.16-.5-.35-1.3-.4-2.4C2.21 15.6 2.2 15.2 2.2 12s.01-3.6.07-4.9c.05-1.1.24-1.9.4-2.4.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .5-.16 1.3-.35 2.4-.4C8.4 2.21 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3.01 7 .07 5.7.13 4.8.31 4 .63c-.9.4-1.7 1-2.4 1.7-.7.7-1.3 1.5-1.7 2.4C-.3 6.8-.1 7.7-.07 9 0 10.3 0 10.7 0 14s.01 3.7.07 5c.06 1.3.25 2.2.57 3 .4.9 1 1.7 1.7 2.4.7.7 1.5 1.3 2.4 1.7.8.32 1.7.51 3 .57 1.3.06 1.7.07 5 .07s3.7-.01 5-.07c1.3-.06 2.2-.25 3-.57.9-.4 1.7-1 2.4-1.7.7-.7 1.3-1.5 1.7-2.4.32-.8.51-1.7.57-3 .06-1.3.07-1.7.07-5s-.01-3.7-.07-5c-.06-1.3-.25-2.2-.57-3-.4-.9-1-1.7-1.7-2.4C20.1 1.3 19.3.7 18.4.3 17.6 0 16.7-.19 15.4-.25 14-.31 13.6-.32 12 .32z"/><path d="M12 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8zM18.4 4a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z"/></svg>
-          </a>
-        </div>
+
+        <article class="course-preview card reveal">
+          <span class="badge">Growth path</span>
+          <h3>Artificial Intelligence</h3>
+          <p>An accessible intro to AI concepts, models, and practical thinking for students interested in the field early.</p>
+          <div class="meta"><span>10 Weeks</span><span>ML basics</span><span>Capstone task</span></div>
+          <a class="btn small" href="courses.html">See details</a>
+        </article>
       </div>
-    </aside>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-    <div class="legal">
-      © 2025 CODI.X TEAM — All Rights Reserved
     </div>
+  </section>
 
+  <!-- <section class="section-tight">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Assignments</div>
+          <h3 class="section-title" style="margin-bottom:6px">Simple, readable, and easy to act on</h3>
+        </div>
+        <a class="btn secondary small" href="assignments.html">Go to assignments</a>
+      </div>
+      <div class="assignment-list">
+        <article class="assignment-row card reveal">
+          <div>
+            <span class="badge">Due Soon</span>
+            <h3 style="margin:14px 0 0">Programming Basics — Assignment 1</h3>
+            <p>Loops, conditions, and problem-solving basics. Clean layout makes the task easier to scan on mobile.</p>
+          </div>
+          <a class="btn small" href="assignments.html">Open Task</a>
+        </article>
+        <article class="assignment-row card reveal">
+          <div>
+            <span class="badge">Upcoming</span>
+            <h3 style="margin:14px 0 0">Front-end Development — UI Task</h3>
+            <p>A mini responsive challenge designed to turn theory into a portfolio-ready front-end exercise.</p>
+          </div>
+          <a class="btn small" href="assignments.html">Open Task</a>
+        </article>
+      </div>
+    </div>
+  </section> -->
 
+  <section class="section" id="contact">
+    <div class="wrap contact-grid">
+      <article class="contact-card card reveal">
+        <div class="eyebrow">Contact the team</div>
+        <h3 class="section-title" style="font-size:2rem;margin-top:16px"></h3>
+        <form class="contact-form">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your full name">
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="your@email.com">
+          </div>
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="How can CODI.X help you?"></textarea>
+          </div>
+          <button class="btn" type="button">Send Message</button>
+        </form>
+      </article>
+      <aside class="contact-card card reveal">
+        <div class="eyebrow">Quick info</div>
+        <div class="info-list">
+          <div class="info-item"><strong>Email</strong><div class="muted">codixacademy@gmail.com</div></div>
+          <div class="info-item"><strong>Location</strong><div class="muted">Faculty of Computers &amp; Artificial Intelligence, Sohag University</div></div>
+          <div class="info-item"><strong>Focus</strong><div class="muted">Free courses, practical training, student community building</div></div>
+          <div class="info-item"><strong>Best next step</strong><div class="muted">Replace demo actions with Google Form links or a real backend when you're ready.</div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
 
-    <div style="display:flex;gap:12px;align-items:center">
-      <div style="color:var(--muted);font-size:13px">Follow</div>
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow">CODI.X Platform</div>
+      <h3 style="margin:16px 0 10px">A programmer, not just a code mechanic</h3>
+      <!-- <p>A cleaner structure, stronger visual hierarchy, better responsiveness, and smoother animations across the full platform.</p> -->
+    </div>
+    <div>
+      <h4 style="margin-top:0">Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="margin-top:0">Connect</h4>
       <div class="socials">
-        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7h-2.5v-3h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.1 2.2.1v2.5h-1.3c-1.2 0-1.6.8-1.6 1.5V12h2.8l-.4 3h-2.4v7C18.3 21.1 22 17 22 12z"/></svg>
-        </a>
-        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6.01 4.9.07 1.1.05 1.9.24 2.4.4.6.2 1.1.5 1.6 1 .5.5.8 1 .99 1.6.16.5.35 1.3.4 2.4.06 1.3.07 1.7.07 4.9s-.01 3.6-.07 4.9c-.05 1.1-.24 1.9-.4 2.4-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.5.16-1.3.35-2.4.4-1.3.06-1.7.07-4.9.07s-3.6-.01-4.9-.07c-1.1-.05-1.9-.24-2.4-.4-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.16-.5-.35-1.3-.4-2.4C2.21 15.6 2.2 15.2 2.2 12s.01-3.6.07-4.9c.05-1.1.24-1.9.4-2.4.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .5-.16 1.3-.35 2.4-.4C8.4 2.21 8.8 2.2 12 2.2"/></svg>
-        </a>
+        <a class="social-link" href="https://www.facebook.com/share/1Fq2WD6ush/" aria-label="Facebook">f</a>
+        <a class="social-link" href="https://www.instagram.com/mohamedfarid__37?igsh=bWw5bzZlazRscjZk" aria-label="Instagram">◎</a>
+        <a class="social-link" href="codixacademy@gmail.com" aria-label="Email">@</a>
       </div>
+      <p style="margin-top:14px">© 2026 CODI.X Team — All Rights Reserved</p>
     </div>
   </div>
 </footer>
-
-<!-- MODAL (details) -->
-<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="close" id="modalClose">&times;</button>
-    <h3 id="modalTitle">Course Details</h3>
-    <p id="modalBody" style="margin-top:8px;color:var(--muted)"></p>
-  </div>
-</div>
-
-<script>
-  // Smooth scroll + active nav
-  document.querySelectorAll('a.nav-link, a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if(href && href.startsWith('#')){
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if(target){
-          target.scrollIntoView({behavior:'smooth', block:'start'});
-          // set active
-          document.querySelectorAll('.nav-link').forEach(x => x.classList.remove('active'));
-          // find nav link for this href
-          document.querySelectorAll('.nav-link').forEach(x => {
-            if(x.getAttribute('href') === href) x.classList.add('active');
-          });
-        }
-      }
-    });
-  });
-
-  // reveal on scroll
-  const revealElems = document.querySelectorAll('[data-reveal]');
-  const reveal = () => {
-    const trigger = window.innerHeight * 0.82;
-    revealElems.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if(top < trigger) el.classList.add('visible');
-    });
-  };
-  window.addEventListener('scroll', reveal);
-  window.addEventListener('load', reveal);
-
-  // Modal details for courses
-  const modalBackdrop = document.getElementById('modalBackdrop');
-  const modalBody = document.getElementById('modalBody');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalClose = document.getElementById('modalClose');
-
-  const courseDetails = {
-    'prog': {
-      title:'Programming Basics — Course Details',
-      body:`Duration: 6 weeks. Topics: Variables, Control Flow, Functions, Data Structures. 
-      Deliverables: weekly assignments and final mini-project. <br><br>
-      Links: <a class="link" href="#" onclick="return false">Syllabus (PDF)</a> • <a class="link" href="#" onclick="return false">Register</a>`
-    },
-    'frontend': {
-      title:'Front-end Development — Course Details',
-      body:`Duration: 8 weeks. Topics: HTML, CSS, JS, Responsive Design, Tooling. 
-      Deliverables: assignments + portfolio project. <br><br>
-      Links: <a class="link" href="#" onclick="return false">Curriculum</a> • <a class="link" href="#" onclick="return false">Register</a>`
-    },
-    'ai': {
-      title:'Artificial Intelligence — Course Details',
-      body:`Duration: 10 weeks. Topics: ML basics, model training, evaluation, project. 
-      Prerequisites: programming basics. <br><br>
-      Links: <a class="link" href="#" onclick="return false">Syllabus</a> • <a class="link" href="#" onclick="return false">Register</a>`
-    }
-  };
-
-  document.querySelectorAll('button[data-course]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-course');
-      const info = courseDetails[key];
-      if(info){
-        modalTitle.innerHTML = info.title;
-        modalBody.innerHTML = info.body;
-        modalBackdrop.style.display = 'flex';
-        modalBackdrop.setAttribute('aria-hidden','false');
-      }
-    });
-  });
-
-  modalClose.addEventListener('click', ()=> closeModal());
-  modalBackdrop.addEventListener('click', (e)=>{ if(e.target===modalBackdrop) closeModal(); });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-
-  function closeModal(){
-    modalBackdrop.style.display = 'none';
-    modalBackdrop.setAttribute('aria-hidden','true');
-  }
-
-  // Contact form demo behaviour
-  const contactForm = document.getElementById('contactForm');
-  if(contactForm){
-    contactForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      const notice = document.getElementById('formNotice');
-      notice.style.display = 'block';
-      notice.textContent = 'Thanks — your message is queued (demo). Connect to backend to send.';
-      notice.style.opacity = 1;
-      setTimeout(()=> notice.style.opacity = 0.9, 10);
-    });
-  }
-
-  // quick button view courses
-  document.getElementById('view-courses').addEventListener('click', ()=>{
-    document.querySelector('a[href="#courses"]').click();
-  });
-
-</script>
+<script src="scripts/common.js"></script>
 
 </body>
 </html>

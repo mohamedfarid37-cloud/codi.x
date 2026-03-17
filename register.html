@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الكورس | CODI.X</title>
+
+  <!-- تنسيقات الموقع الأساسية -->
+  <link rel="stylesheet" href="styles/common.css" />
+
+  <!-- تنسيقات صفحة التسجيل فقط -->
+  <link rel="stylesheet" href="styles/register.css" />
+</head>
+<body>
+
+  <header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img src="./images/logo.jpg" alt="CODI.X logo">
+      <div class="brand-copy">
+        <h1>CODI.X TEAM</h1>
+        <small>Faculty of Computers &amp; AI — Sohag University</small>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul><li><a href="index.html" class="active">Home</a>
+      </li><li><a href="courses.html" class="">Courses</a>
+      </li><li><a href="assignments.html" class="">Assignments</a>
+      </li><li><a href="news.html" class="">News</a>
+      </li><li><a href="index.html#contact" class="">Contact</a>
+      </li></ul>
+    </nav>
+  </div>
+</header>
+  
+   
+
+  <main class="register-page">
+    <div class="register-container">
+
+      <section class="register-hero">
+        <span class="register-badge">CODI.X Registration</span>
+        <h1>تسجيل الكورس</h1>
+        <p>
+          املأ البيانات التالية لإتمام التسجيل في كورسات CODI.X
+        </p>
+      </section>
+
+      <section class="register-form-box">
+        <div class="course-badge" id="courseName">الكورس:Programming Basics </div>
+
+        <form id="registerForm" class="form-grid" action="https://formspree.io/f/maqppkzq" 
+        method="post"
+        
+        >
+          <input type="hidden" id="courseInput" name="course" value="Front-End" />
+
+          <div class="form-group">
+            <label for="fullName">الاسم</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              class="form-control"
+              placeholder="اكتب اسمك"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="year">الفرقة</label>
+            <input
+              type="text"
+              id="year"
+              name="year"
+              class="form-control"
+              placeholder="مثال: الفرقة الثالثة"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">رقم واتساب</label>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              class="form-control"
+              placeholder="اكتب رقم الواتساب"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>هل عندك أساسيات برمجية؟</label>
+
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="basics" value="نعم" required />
+                <span>نعم</span>
+              </label>
+
+              <label class="radio-option">
+                <input type="radio" name="basics" value="لا" required />
+                <span>لا</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">إرسال التسجيل</button>
+
+          <p class="note">
+            
+          </p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const course = params.get("course");
+
+    if (course) {
+      document.getElementById("courseName").textContent = "الكورس: " + course;
+      document.getElementById("courseInput").value = course;
+    }
+
+    // document.getElementById("registerForm").addEventListener("submit", function (e) {
+    //   e.preventDefault();
+    //   alert("الصفحة جاهزة. الخطوة الجاية هنربطها بخدمة استقبال البيانات.");
+    // });
+  </script>
+
+</body>
+</html>

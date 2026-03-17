@@ -1,396 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Assignments | CODI.X TEAM</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* ================================
-   GENERAL STYLE
-================================ */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:"Poppins",sans-serif;
-background:#12000a;
-color:white;
-overflow-x:hidden;
-}
-
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
-}
-
-/* ================================
-   NAVBAR
-================================ */
-
-.site-header{
-position:sticky;
-top:0;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(6px);
-padding:12px 0;
-z-index:999;
-}
-
-.nav-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.brand img{
-width:42px;
-border-radius:6px;
-}
-
-.brand h2{
-font-size:20px;
-}
-
-.main-nav ul{
-display:flex;
-list-style:none;
-gap:25px;
-}
-
-.main-nav a{
-text-decoration:none;
-color:white;
-font-weight:500;
-transition:.3s;
-}
-
-.main-nav a:hover{
-color:#ff4d8a;
-}
-
-/* ================================
-   PAGE TITLE
-================================ */
-
-.page-title{
-text-align:center;
-font-size:34px;
-margin-top:50px;
-font-weight:700;
-}
-
-.page-sub{
-text-align:center;
-color:#caa3b2;
-margin-top:10px;
-}
-
-/* ================================
-   ASSIGNMENTS GRID
-================================ */
-
-.tasks-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-margin-top:40px;
-margin-bottom:60px;
-}
-
-/* ================================
-   TASK CARD
-================================ */
-
-.task-card{
-background:#3a001f;
-border-radius:14px;
-padding:20px;
-text-align:center;
-transition:.35s;
-}
-
-.task-card:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 12px 25px rgba(0,0,0,0.6);
-}
-
-/* ================================
-   TASK IMAGE
-================================ */
-
-.task-card img{
-width:120px;
-height:120px;
-object-fit:cover;
-border-radius:10px;
-margin-bottom:15px;
-}
-
-/* ================================
-   TASK TITLE
-================================ */
-
-.task-title{
-font-size:20px;
-font-weight:600;
-margin-bottom:10px;
-}
-
-/* ================================
-   TASK INFO
-================================ */
-
-.task-info{
-font-size:14px;
-color:#caa3b2;
-margin-bottom:6px;
-}
-
-/* ================================
-   DOWNLOAD BUTTON
-================================ */
-
-.download-btn{
-display:inline-block;
-margin-top:12px;
-padding:9px 18px;
-background:#ff4d8a;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-size:14px;
-transition:.3s;
-}
-
-.download-btn:hover{
-background:#ff2e74;
-}
-
-/* ================================
-   FOOTER
-================================ */
-
-footer{
-border-top:1px solid rgba(255,255,255,0.1);
-padding:25px 0;
-text-align:center;
-color:#caa3b2;
-}
-
-/* ================================
-   MOBILE
-================================ */
-
-@media(max-width:768px){
-
-.main-nav ul{
-gap:15px;
-font-size:14px;
-}
-
-.page-title{
-font-size:26px;
-}
-
-.task-card img{
-width:100px;
-height:100px;
-}
-
-}
-
-/* ================================
-   GLOBAL RESPONSIVE FIX
-================================ */
-
-/* الصور متكبرش عن الكرت */
-/* img{
-max-width:100%;
-height:auto;
-display:block;
-} */
-/* الصور العامة */
-img{
-max-width:100%;
-height:auto;
-}
-
-/* صور الكروت في المنتصف */
-.course-card img{
-display:block;
-margin:0 auto 15px auto;
-}
-/* يخلي العناصر تلف تحت بعض لو الشاشة صغيرة */
-.nav-inner{
-flex-wrap:wrap;
-}
-
-/* المينيو تبقى في سطر تحت اللوجو في الموبايل */
-@media (max-width:768px){
-
-.main-nav{
-width:100%;
-margin-top:10px;
-}
-
-.main-nav ul{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-padding:0;
-}
-
-.main-nav a{
-font-size:14px;
-}
-
-/* يقلل المسافات */
-.wrap,
-.container{
-width:95%;
-}
-
-/* يخلي الكروت تملى الشاشة */
-.courses-container{
-grid-template-columns:1fr;
-}
-
-/* أي جريد تانية */
-.cards,
-.grid,
-.items{
-grid-template-columns:1fr !important;
-}
-
-}
-
-/* موبايلات أصغر */
-@media (max-width:480px){
-
-.page-title{
-font-size:22px;
-}
-
-.brand h2{
-font-size:18px;
-}
-
-}
-
-</style>
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignments | CODI.X TEAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/common.css"><link rel="stylesheet" href="styles/assignments.css">
 </head>
-
 <body>
 
-<!-- ================================
-     NAVBAR
-================================ -->
-
 <header class="site-header">
-
-<div class="container nav-inner">
-
-<div class="brand">
-<img src="./images/logo.jpg">
-<h2>CODI.X</h2>
-</div>
-
-<nav class="main-nav">
-<ul>
-
-<li><a href="index.html">Home</a></li>
-<li><a href="courses.html">Courses</a></li>
-<li><a href="news.html">News</a></li>
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-</nav>
-
-</div>
-
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img src="images/logo.jpg" alt="CODI.X logo">
+      <div class="brand-copy">
+        <h1>CODI.X TEAM</h1>
+        <small>Faculty of Computers &amp; AI — Sohag University</small>
+      </div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul><li><a href="index.html" class="">Home</a></li><li><a href="courses.html" class="">Courses</a></li><li><a href="assignments.html" class="active">Assignments</a></li><li><a href="news.html" class="">News</a></li><li><a href="index.html#contact" class="">Contact</a></li></ul>
+    </nav>
+  </div>
 </header>
+<main class="page-shell">
+  <section class="hero-mini wrap center reveal">
+    <div class="eyebrow">Task center</div>
+    <h1 class="page-title">Assignments</h1>
+    <p class="page-sub">Don't put off today's tasks until tomorrow</p>
+  </section>
+  <section class="section-tight">
+    <div class="wrap assignment-grid">
+      <article class="task-card card reveal">
+        <div class="task-head"><span class="badge">Data Structure</span><span class="badge">Month 7</span></div>
+        <h2 class="task-title">Task Month 7</h2>
+        <p class="task-info">A practical assignment focused on logic, arrays, and structured thinking.</p>
+        <img src="images/logo.jpg" alt="Data Structure task">
+        <div class="timeline">
+          <div><strong>Deadline</strong><br><span class="muted">Not available now</span></div>
+          <div><strong>Instructor</strong><br><span class="muted">Eng. Mohamed Farid</span></div>
+          <div><strong>Goal</strong><br><span class="muted">Reinforce concepts through a mini challenge instead of passive study.</span></div>
+        </div>
+        <div style="margin-top:18px"><a class="btn" href="#">Coming Soon</a></div>
+      </article>
+      <article class="task-card card reveal">
+        <div class="task-head"><span class="badge">English</span><span class="badge">Unit 1</span></div>
+        <h2 class="task-title">Unit One</h2>
+        <p class="task-info">A supportive learning task focused on communication and technical vocabulary.</p>
+        <img src="images/logo.jpg" alt="English task">
+        <div class="timeline">
+          <div><strong>Deadline</strong><br><span class="muted">Not available now</span></div>
+          <div><strong>Instructor</strong><br><span class="muted">
+Eng. Abdelrahman</span></div>
+          <div><strong>Goal</strong><br><span class="muted">Give students a smoother path for reading and speaking in tech contexts.</span></div>
+        </div>
+        <div style="margin-top:18px"><a class="btn" href="#">Coming Soon</a></div>
+      </article>
+    </div>
+  </section>
+</main>
 
-
-<!-- ================================
-     PAGE TITLE
-================================ -->
-
-<div class="container">
-
-<h1 class="page-title">Assignments</h1>
-
-<p class="page-sub">
-Download and submit your course assignments
-</p>
-
-
-<!-- ================================
-     ASSIGNMENTS SECTION
-================================ -->
-
-<div class="tasks-container">
-
-<!-- ASSIGNMENT 1 -->
-
-<div class="task-card">
-
-<img src="./images/farid5.jpg">
-
-<div class="task-title">Task Month 7</div>
-
-<div class="task-info">Course: Data Structure</div>
-
-<div class="task-info">Deadline: 15 Apr 2026</div>
-
-<a href="#" class="download-btn">Soon</a>
-
-</div>
-
-
-<!-- ASSIGNMENT 2 -->
-
-<div class="task-card">
-
-<img src="./images/abdo.jpg">
-
-<div class="task-title">Unit One</div>
-
-<div class="task-info">Course: English</div>
-
-<div class="task-info">Deadline: 25 July 2026</div>
-
-<a href="#" class="download-btn">Soon</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-<footer>
-© 2026 CODI.X Team — All Rights Reserved
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="eyebrow">CODI.X Platform</div>
+      <h3 style="margin:16px 0 10px">A programmer, not just a code mechanic</h3>
+      <!-- <p>A cleaner structure, stronger visual hierarchy, better responsiveness, and smoother animations across the full platform.</p> -->
+    </div>
+    <div>
+      <h4 style="margin-top:0">Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="margin-top:0">Connect</h4>
+      <div class="socials">
+        <a class="social-link" href="https://www.facebook.com/share/1Fq2WD6ush/" aria-label="Facebook">f</a>
+        <a class="social-link" href="https://www.instagram.com/mohamedfarid__37?igsh=bWw5bzZlazRscjZk" aria-label="Instagram">◎</a>
+        <a class="social-link" href="codixacadmy@gmail.com" aria-label="Email">@</a>
+      </div>
+      <p style="margin-top:14px">© 2026 CODI.X Team — All Rights Reserved</p>
+    </div>
+  </div>
 </footer>
+<script src="scripts/common.js"></script>
 
-</body>
-</html>
+</body></html>
